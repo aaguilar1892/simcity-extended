@@ -1,0 +1,24 @@
+# Inspiration taken from Github repo, gitignore, C++.gitignore
+
+# Documents
+*.docx
+*.pdf
+
+# CSV Files
+*.csv
+
+# Text Files
+*.txt
+
+#Executables
+*.exe
+*.out
+*.app
+
+# Compiled Headers
+*.gch
+*.pch
+
+# IDEs and Editors
+*.vscode
+*.idea
