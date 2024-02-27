@@ -25,10 +25,10 @@ void printOutput(list<Zone> &mainList){
     for(int i= 0; i<= row; ++i){
         for(int j= 0; j<= col; ++j){
             if(graph[i][j] =='R' || graph[i][j] == 'I' || graph[i][j] == 'C' || graph[i][j] == 'T' || graph[i][j] == '-' || graph[i][j] == '#' || graph[i][j] == 'P'){
-                cout<<graph[i][j]<<" ";
+                cout<<graph[i][j]<<"  ";
             }
             else{
-                cout<<" ";
+                cout<<"   ";
             }
         }
         cout<<endl;
