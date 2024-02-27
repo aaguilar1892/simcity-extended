@@ -1,5 +1,4 @@
 #include <iostream>
-#include "initialization.h"
 #include "output.h"
 using namespace std;
 
