@@ -1,6 +1,6 @@
 #include <iostream>
-#include "initialization.hpp"
-#include "output.hpp"
+#include "initialization.h"
+#include "output.h"
 using namespace std;
 
 int main(){
