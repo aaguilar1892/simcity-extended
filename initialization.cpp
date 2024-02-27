@@ -5,8 +5,6 @@ void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate){
     string configFile;
     fstream fin;
     string regionFile;
-    //int timeLimit;
-    //int refreshRate;
 
     cout << "Input Configuration File: ";
     cin >> configFile;
@@ -35,9 +33,8 @@ void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate){
         exit(1);
     } //Check if region file opens correctly
 
-    //Until file end
     int xCount = 0;
-    int yCount = 0;
+    int yCount = 0; //For setting the x & y coords of the zones
 
     char myZone;
     Zone currZone;
@@ -45,7 +42,7 @@ void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate){
     while(!fin.eof()){
 	    myZone = fin.get();
 	    
-	    if(myZone == 'R' || myZone == 'I' || myZone == 'C' || myZone == 'T' || myZone == '-' || myZone == '#' || myZone == 'P'){
+	    if(myZone == 'R' || myZone == 'I' || myZone == 'C' || myZone == 'T' || myZone == '-' || myZone == '#' || myZone == 'P' || myZone == ' '){
 	    	
 		    currZone.SetZoneType(myZone);
 		    currZone.Setx(xCount);
@@ -62,4 +59,6 @@ void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate){
 		    xCount = 0;
 	    } //Increase x-coord by 1 until end of line, then reset and increase y-coord by 1
     }
+
+    fin.close();
 }
