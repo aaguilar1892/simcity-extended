@@ -1,4 +1,6 @@
-#include "initialization.h"
+#include <iostream>
+#include "initialization.hpp"
+#include "output.hpp"
 using namespace std;
 
 int main(){
@@ -8,6 +10,7 @@ int main(){
 
     list<Zone> mainList;
     InitializeSim(mainList, timeLimit, refreshRate);
+    printOutput(mainList);
 
     //Test time limit & refresh rate assigned correctly
     /*
@@ -15,12 +18,12 @@ int main(){
     cout << "Refresh rate: " << refreshRate << endl;
     */
     //Test zone coordinates assigned correctly
-    /*
-    for(auto it : mainList){
+    
+    /*for(auto it : mainList){
 
-	    cout << it.Getx() << ", " << it.Gety() << endl;
-    } 
-    */ 
+        cout << it.Getx() << ", " << it.Gety() << endl;
+    }*/
+    
 
     return 0;
 }
