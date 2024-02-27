@@ -10,4 +10,7 @@ Compile Method:
 Files needed:
     config1.txt , region1.csv
 
+Program Function:
+    Currently, it inputs the region and timesteps then it outputs the inital state. 
+
 
