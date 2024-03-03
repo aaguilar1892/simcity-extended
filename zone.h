@@ -8,6 +8,9 @@ class Zone{
 		int y; //x & y coordinates of zone
 		char zoneType;
 
+		int numPop;
+		int numWorkers;
+		int numGoods; //Variables for population of zone, available workers, & goods
 
 	public:
 
@@ -16,6 +19,15 @@ class Zone{
 		void SetZoneType(char type);
 		int Getx();
 		int Gety();
-		char GetZoneType();
+		char GetZoneType(); //Get & sets for zone coordinates and type
+
+		void SetPop(int pop);
+		void SetWorkers(int workers);
+		void SetGoods(int goods);
+		int GetPop();
+		int GetWorkers();
+		int GetGoods(); //Get and sets for zone population, workers, and goods
+
+		void CheckAdjZone(char type);
 };
 
