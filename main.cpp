@@ -7,6 +7,9 @@ int main(){
     int timeLimit;
     int refreshRate;
 
+    int workers = 0;
+    int goods = 0; //Variables for # available workers & goods
+
     list<Zone> mainList;
     InitializeSim(mainList, timeLimit, refreshRate);
     printOutput(mainList);
@@ -22,15 +25,11 @@ int main(){
 
         cout << it.Getx() << ", " << it.Gety() << endl;
     }*/
-    
-    char type; //Character representing zone type
 
     for(int i = 0; i < timeLimit; ++i){
 
         for(auto it : mainList){
-
-            type = it.GetZoneType();
-            it.CheckAdjZones(type); //Analyze zone
+            it.CheckAdjZones(workers, goods); //Analyze zone
         }
 
         //Print output for current time step if appropriate for specified refresh rate
