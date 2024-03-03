@@ -28,6 +28,6 @@ class Zone{
 		int GetWorkers();
 		int GetGoods(); //Get and sets for zone population, workers, and goods
 
-		void CheckAdjZone(char type);
+		void CheckAdjZones(char type);
 };
 
