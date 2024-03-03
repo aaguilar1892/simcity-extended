@@ -25,32 +25,40 @@ char Zone::GetZoneType(){
 	return zoneType;
 }
 
-//Set and gets for zone population, workers, goods
-void Zone::SetPop(int pop){
-	numPop = pop;
-}
-
-void Zone::SetWorkers(int workers){
-	numWorkers = workers;
-}
-
-void Zone::SetGoods(int goods){
-	numGoods = goods;
-}
-
+//Get zone population
 int Zone::GetPop(){
 	return numPop;
 }
 
-int Zone::GetWorkers(){
-	return numWorkers;
-}
-
-int Zone::GetGoods(){
-	return numGoods;
-}
-
 //Function for analyzing zone
-void Zone::CheckAdjZones(char type){
+void Zone::CheckAdjZones(int workers, int goods){
 	
+	bool power; //Is the zone adjacent to a powerline?
+	int adjPop1; //# adjacent zones w/population >= 1
+	int adjPop2; //# adjacent zones w/population >= 2
+	int adjPop3; //# adjacent zones w/population >= 3
+	int adjPop4; //# adjacent zones w/population >= 4
+
+	if(zoneType == 'C'){
+
+		if(power == true && numPop == 0 && workers >= 1 && goods >= 1){
+			++numPop;
+			SetGoods(false, goods);
+			SetWorkers(false, workers);
+		}
+		else if(numPop == 0 && adjPop1 >= 1 && workers >= 1 && goods >= 1){
+			++numPop;
+			SetGoods(false, goods);
+			SetWorkers(false, workers);
+		}
+		else if(numPop == 1 && adjPop1 >= 2 && workers >= 1 && goods >= 1){
+			++numPop;
+			SetGoods(false, goods);
+			SetWorkers(false, workers);
+		}
+		else{}
+	} //Check conditions for commercial zone growth
+
+	if(zoneType == 'R'){} //Check conditions for residential zone growth
+	if(zoneType == 'I'){} //Check conditions for industrial zone growth
 }
