@@ -1,16 +1,17 @@
 #include <iostream>
+#include <list>
+#include "WorkersAndGoods.h"
 
+using namespace std;
 class Zone{
 
 	private:
 
 		int x;
 		int y; //x & y coordinates of zone
-		char zoneType;
 
-		int numPop;
-		int numWorkers;
-		int numGoods; //Variables for population of zone, available workers, & goods
+		char zoneType;
+		int numPop; //Variables for zone population & type
 
 	public:
 
@@ -21,13 +22,10 @@ class Zone{
 		int Gety();
 		char GetZoneType(); //Get & sets for zone coordinates and type
 
-		void SetPop(int pop);
-		void SetWorkers(int workers);
-		void SetGoods(int goods);
-		int GetPop();
-		int GetWorkers();
-		int GetGoods(); //Get and sets for zone population, workers, and goods
+		int GetPop(); //Get zone population
 
-		void CheckAdjZones(char type);
+		void CheckAdjZones(int workers, int goods);
+
+		//Add default constructor for zone w/population 0
 };
 
