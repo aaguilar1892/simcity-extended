@@ -12,8 +12,10 @@ int main(){
 
     list<Zone> mainList;
     InitializeSim(mainList, timeLimit, refreshRate);
+    setZone(mainList, resident, industrial, commerical);
     printOutput(mainList);
     printArea(mainList);
+
 
     //Test time limit & refresh rate assigned correctly
     /*
