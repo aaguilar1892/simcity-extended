@@ -27,7 +27,7 @@ class Zone{
 
 		int GetPop(); //Get zone population
 
-		void CheckAdjZones(int workers, int goods);
+		void CheckAdjZones(int workers, int goods, int changed);
 
 		//Add default constructor for zone w/population 0
 };
