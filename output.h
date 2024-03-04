@@ -9,4 +9,6 @@ using namespace std;
 
 void printOutput(list<Zone> &mainList);
 
+void printArea(list<Zone> &mainList);
+
 #endif /* output_hpp */
