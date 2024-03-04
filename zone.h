@@ -13,6 +13,8 @@ class Zone{
 		char zoneType;
 		int numPop; //Variables for zone population & type
 
+		//Add list variable for adjacent zones
+
 	public:
 
 		void Setx(int xCoord);
