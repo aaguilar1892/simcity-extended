@@ -94,3 +94,25 @@ void printArea(list<Zone> &mainList){
     }
 }
 
+void setZone(list<Zone> &mainList, list<Zone> &resident,list<Zone> &industrial,list<Zone> &commerical){
+    
+    Zone currZone;
+    for(auto it = mainList.begin(); it != mainList.end(); ++it){
+        if(it->GetZoneType() == 'R'){
+            currZone.Setx(it->Getx());
+            currZone.Sety(it->Gety());
+            resident.push_back(currZone);
+        }else if(it->GetZoneType() == 'I'){
+            currZone.Setx(it->Getx());
+            currZone.Sety(it->Gety());
+            industrial.push_back(currZone);
+        }else if(it->GetZoneType() == 'C'){
+            currZone.Setx(it->Getx());
+            currZone.Sety(it->Gety());
+            commerical.push_back(currZone);
+        }
+    }
+    
+    
+}
+
