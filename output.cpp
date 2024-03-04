@@ -101,18 +101,19 @@ void setZone(list<Zone> &mainList, list<Zone> &resident,list<Zone> &industrial,l
         if(it->GetZoneType() == 'R'){
             currZone.Setx(it->Getx());
             currZone.Sety(it->Gety());
+            currZone.SetZoneType(it->GetZoneType());
             resident.push_back(currZone);
         }else if(it->GetZoneType() == 'I'){
             currZone.Setx(it->Getx());
             currZone.Sety(it->Gety());
+            currZone.SetZoneType(it->GetZoneType());
             industrial.push_back(currZone);
         }else if(it->GetZoneType() == 'C'){
             currZone.Setx(it->Getx());
             currZone.Sety(it->Gety());
+            currZone.SetZoneType(it->GetZoneType());
             commerical.push_back(currZone);
         }
     }
-    
-    
 }
 
