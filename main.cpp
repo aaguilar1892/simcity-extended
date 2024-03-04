@@ -16,30 +16,46 @@ int main(){
     list<Zone> commerical;
     InitializeSim(mainList, timeLimit, refreshRate);
     setZone(mainList, resident, industrial, commerical);
-    printOutput(mainList);
-    printArea(mainList);
-
-
+    
     //Test time limit & refresh rate assigned correctly
     /*
     cout << "Time limit: " << timeLimit << endl;
     cout << "Refresh rate: " << refreshRate << endl;
     */
     //Test zone coordinates assigned correctly
-    
-    /*for(auto it : mainList){
+        
+    /*for(auto it : resident){
 
         cout << it.Getx() << ", " << it.Gety() << endl;
     }*/
+    
+    int changed=0;
 
     for(int i = 0; i < timeLimit; ++i){
-
+        changed=0;
+        
         for(auto it : mainList){
-            it.CheckAdjZones(workers, goods); //Analyze zone
+            it.CheckAdjZones(workers, goods, changed); //Analyze zone
         }
-
+        
+        if(changed == 0){
+            break;
+        }
+        
         //Print output for current time step if appropriate for specified refresh rate
+        if(i%refreshRate == 0){
+            printOutput(mainList);
+        }
     } //Analyze every zone during each time step until time limit is reached
-
+    
+    //final print
+    printOutput(mainList);
+    
+    //print final population of each zone
+    printPop(resident, industrial, commerical);
+    
+    //print area wanted by student and get coordinates
+    printArea(mainList,resident, industrial, commerical);
+    
     return 0;
 }
