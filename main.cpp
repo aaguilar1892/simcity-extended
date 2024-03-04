@@ -14,7 +14,6 @@ int main(){
     list<Zone> resident;
     list<Zone> industrial;
     list<Zone> commerical;
-    InitializeSim(mainList,
     InitializeSim(mainList, timeLimit, refreshRate);
     setZone(mainList, resident, industrial, commerical);
     printOutput(mainList);
