@@ -14,6 +14,7 @@ class Zone{
 		int numPop; //Variables for zone population & type
 
 		//Add list variable for adjacent zones
+		list<Zone> adjZone;
 
 	public:
 
