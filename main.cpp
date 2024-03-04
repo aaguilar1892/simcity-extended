@@ -11,6 +11,10 @@ int main(){
     int goods = 0; //Variables for # available workers & goods
 
     list<Zone> mainList;
+    list<Zone> resident;
+    list<Zone> industrial;
+    list<Zone> commerical;
+    InitializeSim(mainList,
     InitializeSim(mainList, timeLimit, refreshRate);
     setZone(mainList, resident, industrial, commerical);
     printOutput(mainList);
