@@ -1,5 +1,10 @@
 #include "zone.h"
 
+//Default constructor for zone objects
+Zone::Zone(){
+    numPop = 0;
+}
+
 //Set and gets for zone coordinates and type
 void Zone::Setx(int xCoord){
     x = xCoord;
@@ -40,11 +45,11 @@ void Zone::SetPop(int pop){
 //Function for analyzing zone
 void Zone::CheckAdjZones(int workers, int goods, int changed){
     
-    bool power; //Is the zone adjacent to a powerline?
-    int adjPop1; //# adjacent zones w/population >= 1
-    int adjPop2; //# adjacent zones w/population >= 2
-    int adjPop3; //# adjacent zones w/population >= 3
-    int adjPop4; //# adjacent zones w/population >= 4
+    bool power = false; //Is the zone adjacent to a powerline?
+    int adjPop1 = 0; //# adjacent zones w/population >= 1
+    int adjPop2 = 0; //# adjacent zones w/population >= 2
+    int adjPop3 = 0; //# adjacent zones w/population >= 3
+    int adjPop4 = 0; //# adjacent zones w/population >= 4
 
     if(zoneType == 'C'){
 
@@ -112,12 +117,7 @@ void Zone::CheckAdjZones(int workers, int goods, int changed){
     }
  *///Check conditions for industrial zone growth
 }
-void Zone :: AdjacencyList(vector<Zone> &mainList){
-    for(auto it : mainList){
-        for(auto iter : mainList){
-            if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() -1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() -1)){
-                adjZones.push_back(iter);
-            }
-        }
-    }
+
+Zone::SetAdjList(Zone adjZone){
+    adjZones.push_back(adjZone);
 }
