@@ -31,7 +31,7 @@ char Zone::GetZoneType(){
 }
 
 
-//Get zone population
+//Set and get zone population
 int Zone::GetPop(){
     return numPop;
 }
@@ -39,8 +39,6 @@ int Zone::GetPop(){
 void Zone::SetPop(int pop){
     numPop = pop;
 }
-
-
 
 //Function for analyzing zone
 void Zone::CheckAdjZones(int workers, int goods, int &changed){
@@ -50,6 +48,28 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed){
     int adjPop2 = 0; //# adjacent zones w/population >= 2
     int adjPop3 = 0; //# adjacent zones w/population >= 3
     int adjPop4 = 0; //# adjacent zones w/population >= 4
+
+    for(auto iter: adjZones){
+        cout << "TEST: Adjacency list analysis loop entered." << endl;
+
+        if(iter.GetZoneType() == 'T'){
+            power = true;
+        }
+
+        if(iter.GetPop() >= 4){
+            ++adjPop4;
+        }
+        else if(iter.GetPop() >= 3){
+            ++adjPop3;
+        }
+        else if(iter.GetPop() >= 2){
+            ++adjPop2;
+        }
+        else if(iter.GetPop() >= 1){
+            ++adjPop1;
+        }
+        else{}
+    } //Analyzes adjacent zones to find possible growth conditions
 
     if(zoneType == 'C'){
 
