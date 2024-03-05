@@ -48,6 +48,10 @@ int main(){
         if(i%refreshRate == 0){
             printOutput(mainList);
         }
+        cout<<"Time Step: "<<i+1<<endl;
+        cout<<"Available Workers: "<<workers<<endl;
+        cout<<"Available Goods: "<<goods<<endl;
+
     } //Analyze every zone during each time step until time limit is reached
     
     //final print
