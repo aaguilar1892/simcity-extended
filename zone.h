@@ -26,7 +26,7 @@ class Zone{
 		char GetZoneType(); //Get & sets for zone coordinates and type
 
 		int GetPop(); //Get zone population
-		void SetPop(int pop);
+		//void SetPop(int pop);
 
 		void CheckAdjZones(int workers, int goods, int changed);
 
