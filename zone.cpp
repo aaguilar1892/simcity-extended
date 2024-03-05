@@ -68,22 +68,36 @@ void Zone::CheckAdjZones(int workers, int goods, int changed){
         }
         else{}
     } //Check conditions for commercial zone growth
-/*
- Outline for industrial and Residential, please keep in ++changed, in all if or else if statements, in else statement do not add changed
+
+ //Outline for industrial and Residential, please keep in ++changed, in all if or else if statements, in else statement do not add changed
     if(zoneType == 'R'){
-        if(){
-            
+        if(power == true && numPop == 0){
+            ++numPop;
             ++changed;
-        }else if(){
-            
+        }
+        else if(numPop == 0 && adjPop1 >= 1){
+            ++numPop;
             ++changed;
-        }else if(){
-            
+        }
+        else if(numPop == 1 && adjPop1 >= 2){
+            ++numPop;
             ++changed;
-        }else{}
-        
+        }
+        else if (numPop == 2 && adjPop2 >= 4){
+            ++numPop;
+            ++changed;
+        }
+        else if(numPop == 3 && adjPop3 >= 6){
+            ++numPop;
+            ++changed;
+        }
+        else if(numPop == 4 && adjPop4 >= 8){
+            ++numPop;
+            ++changed;
+        } 
+        else {}    
     } //Check conditions for residential zone growth
-    if(zoneType == 'I'){
+    /*if(zoneType == 'I'){
         if(){
             
             ++changed;
