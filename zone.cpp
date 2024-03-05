@@ -30,11 +30,11 @@ char Zone::GetZoneType(){
 int Zone::GetPop(){
     return numPop;
 }
-
+/*
 void Zone::SetPop(int pop){
     numPop = pop;
 }
-
+*/
 
 
 //Function for analyzing zone
