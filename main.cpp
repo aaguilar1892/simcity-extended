@@ -10,11 +10,13 @@ int main(){
     int workers = 0;
     int goods = 0; //Variables for # available workers & goods
 
-    list<Zone> mainList;
+    list<Zone> mainList; //List of all zones
     list<Zone> resident;
     list<Zone> industrial;
     list<Zone> commerical;
-    InitializeSim(mainList, timeLimit, refreshRate);
+
+    InitializeSim(mainList, timeLimit, refreshRate); //Initializes mainList, timeLimit, refreshRate, & zone coordinates
+    SetAdjLists(mainList); //Creates adjacency lists for each zone
     setZone(mainList, resident, industrial, commerical);
     
     //Test time limit & refresh rate assigned correctly
