@@ -43,7 +43,7 @@ void Zone::SetPop(int pop){
 
 
 //Function for analyzing zone
-void Zone::CheckAdjZones(int workers, int goods, int changed){
+void Zone::CheckAdjZones(int workers, int goods, int &changed){
     
     bool power = false; //Is the zone adjacent to a powerline?
     int adjPop1 = 0; //# adjacent zones w/population >= 1
@@ -118,6 +118,6 @@ void Zone::CheckAdjZones(int workers, int goods, int changed){
  *///Check conditions for industrial zone growth
 }
 
-Zone::SetAdjList(Zone adjZone){
+void Zone::SetAdjList(Zone adjZone){
     adjZones.push_back(adjZone);
 }
