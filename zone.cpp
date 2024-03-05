@@ -98,26 +98,32 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed){
     if(zoneType == 'R'){
         if(power == true && numPop == 0){
             ++numPop;
+            SetWorkers(true, workers);
             ++changed;
         }
         else if(numPop == 0 && adjPop1 >= 1){
             ++numPop;
+            SetWorkers(true, workers);
             ++changed;
         }
         else if(numPop == 1 && adjPop1 >= 2){
             ++numPop;
+            SetWorkers(true, workers);
             ++changed;
         }
         else if (numPop == 2 && adjPop2 >= 4){
             ++numPop;
+            SetWorkers(true, workers);
             ++changed;
         }
         else if(numPop == 3 && adjPop3 >= 6){
             ++numPop;
+            SetWorkers(true, workers);
             ++changed;
         }
         else if(numPop == 4 && adjPop4 >= 8){
             ++numPop;
+            SetWorkers(true, workers);
             ++changed;
         } 
         else {}    
