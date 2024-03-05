@@ -98,3 +98,12 @@ void Zone::CheckAdjZones(int workers, int goods, int changed){
     }
  *///Check conditions for industrial zone growth
 }
+void Zone :: AdjacencyList(vector<Zone> &mainList){
+    for(auto it : mainList){
+        for(auto iter : mainList){
+            if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() -1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() -1)){
+                adjZones.push_back(iter);
+            }
+        }
+    }
+}
