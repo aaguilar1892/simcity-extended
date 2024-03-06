@@ -16,7 +16,6 @@ int main(){
     list<Zone> commerical;
 
     InitializeSim(mainList, timeLimit, refreshRate); //Initializes mainList, timeLimit, refreshRate, & zone coordinates
-    SetAdjLists(mainList); //Creates adjacency lists for each zone
     setZone(mainList, resident, industrial, commerical);
     
     //Test time limit & refresh rate assigned correctly
@@ -37,7 +36,7 @@ int main(){
         changed=0;
         
         for(auto it : mainList){
-            it.CheckAdjZones(workers, goods, changed); //Analyze zone
+            it.CheckAdjZones(workers, goods, changed, mainList); //Analyze zone
         }
         
         if(changed == 0){
