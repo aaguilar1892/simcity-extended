@@ -14,12 +14,15 @@ class Zone{
         char zoneType;
         int numPop; //Variables for zone population & type
 
+        bool prevChanged;
+
     public:
 
         void Setx(int xCoord);
         void Sety(int yCoord);
         void SetZoneType(char type); //Sets for zone coordinates and type
         void SetPop(int pop); //Set zone population
+        void SetPrevChanged(bool change);
 
         int Getx();
         int Gety();
