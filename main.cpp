@@ -2,6 +2,13 @@
 #include "output.h"
 using namespace std;
 
+void ResetChanges(list<Zone> &mainList){
+
+    for(auto it : mainList){
+        it.SetPrevChanged(false);
+    }
+}
+
 int main(){
     
     int timeLimit;
@@ -29,6 +36,7 @@ int main(){
     
     for(int i = 0; i < timeLimit; ++i){
         changed=0;
+        ResetChanges(mainList);
         
         for(auto& it : mainList){
             it.CheckAdjZones(workers, goods, changed, mainList);//Analyze zone
