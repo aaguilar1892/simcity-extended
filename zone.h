@@ -24,7 +24,10 @@ class Zone{
         void Sety(int yCoord);
         void SetZoneType(char type); //Sets for zone coordinates and type
         void SetPop(int pop); //Set zone population
-        void SetPrevChanged(bool change);
+        void SetPrevChanged(bool change); 
+
+        int CalcWorkers(list<Zone> mainList, int workers);
+        int CalcGoods(list<Zone> mainList, int goods); //Calculate total # available workers & goods
 
         int Getx();
         int Gety();
