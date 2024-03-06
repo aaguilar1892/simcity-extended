@@ -48,6 +48,7 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
     int adjPop2 = 0; //# adjacent zones w/population >= 2
     int adjPop3 = 0; //# adjacent zones w/population >= 3
     int adjPop4 = 0; //# adjacent zones w/population >= 4
+    prevChanged = false;
 
     //Check that current zone isn't empty
     if(zoneType == 'T' || zoneType == 'P'|| zoneType == '#' || zoneType == '-' || zoneType == 'R' || zoneType == 'I' || zoneType == 'C'){
