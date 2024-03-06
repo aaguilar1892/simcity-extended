@@ -31,13 +31,21 @@ char Zone::GetZoneType(){
 }
 
 
-//Set and get zone population
+//Set and get zone population, # workers, & # goods
 int Zone::GetPop(){
     return numPop;
 }
 
 void Zone::SetPop(int pop){
     numPop = pop;
+}
+
+int Zone::GetWorkers(){
+    return numWorkers;
+}
+
+int Zone::GetGoods(){
+    return numGoods;
 }
 
 //Function for analyzing zone
@@ -88,22 +96,22 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
 
         if(power == true && numPop == 0 && workers >= 1 && goods >= 1){
             ++numPop;
-            SetGoods(false, goods);
-            SetWorkers(false, workers);
+            --numGoods;
+            --numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if(numPop == 0 && adjPop1 >= 1 && workers >= 1 && goods >= 1){
             ++numPop;
-            SetGoods(false, goods);
-            SetWorkers(false, workers);
+            --numGoods;
+            --numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if(numPop == 1 && adjPop1 >= 2 && workers >= 1 && goods >= 1){
             ++numPop;
-            SetGoods(false, goods);
-            SetWorkers(false, workers);
+            --numGoods;
+            --numWorkers;
             ++changed;
             prevChanged = true;
         }
@@ -114,37 +122,37 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
     if(zoneType == 'R'){
         if(power == true && numPop == 0){
             ++numPop;
-            SetWorkers(true, workers);
+            ++numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if(numPop == 0 && adjPop1 >= 1){
             ++numPop;
-            SetWorkers(true, workers);
+            ++numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if(numPop == 1 && adjPop1 >= 2){
             ++numPop;
-            SetWorkers(true, workers);
+            ++numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if (numPop == 2 && adjPop2 >= 4){
             ++numPop;
-            SetWorkers(true, workers);
+            ++numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if(numPop == 3 && adjPop3 >= 6){
             ++numPop;
-            SetWorkers(true, workers);
+            ++numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if(numPop == 4 && adjPop4 >= 8){
             ++numPop;
-            SetWorkers(true, workers);
+            ++numWorkers;
             ++changed;
             prevChanged = true;
         } 
@@ -171,4 +179,21 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
 
 void Zone::SetPrevChanged(bool change){
     prevChanged = change;
+}
+
+//Calculate total workers & goods
+int Zone::CalcWorkers(list<Zone> mainList, int workers){
+
+    for(auto it : mainList){
+        workers = workers + it.GetWorkers();
+    }
+    return workers;
+}
+
+int Zone::CalcGoods(list<Zone> mainList, int goods){
+
+    for(auto it: mainList){
+        goods = goods + it.GetGoods();
+    }
+    return goods;
 }
