@@ -167,3 +167,7 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
     }
  *///Check conditions for industrial zone growth
 }
+
+void Zone::SetPrevChanged(bool change){
+    prevChanged = change;
+}
