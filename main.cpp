@@ -52,6 +52,9 @@ int main(){
             printOutput(mainList);
         }
 
+        workers = CalcWorkers(mainList, workers);
+        goods = CalcGoods(mainList, workers); //Calculate total # available workers & goods
+
     cout<<"Time Step: "<<i+1<<endl;
     cout<<"Available Workers: "<<workers<<endl;
     cout<<"Available Goods: "<<goods<<endl;
