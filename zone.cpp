@@ -3,6 +3,8 @@
 //Default constructor for zone objects
 Zone::Zone(){
     numPop = 0;
+    numWorkers = 0;
+    numGoods = 0;
 }
 
 //Set and gets for zone coordinates and type
