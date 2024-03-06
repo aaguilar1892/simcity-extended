@@ -16,6 +16,7 @@ int main(){
     
     int workers = 0;
     int goods = 0; //Variables for # available workers & goods
+    Zone myZone;
     
     list<Zone> mainList; //List of all zones
     
@@ -52,8 +53,8 @@ int main(){
             printOutput(mainList);
         }
 
-        workers = CalcWorkers(mainList, workers);
-        goods = CalcGoods(mainList, workers); //Calculate total # available workers & goods
+        workers = myZone.CalcWorkers(mainList, workers);
+        goods = myZone.CalcGoods(mainList, workers); //Calculate total # available workers & goods
 
     cout<<"Time Step: "<<i+1<<endl;
     cout<<"Available Workers: "<<workers<<endl;
