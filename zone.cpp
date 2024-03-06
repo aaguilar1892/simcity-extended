@@ -41,7 +41,7 @@ void Zone::SetPop(int pop){
 }
 
 //Function for analyzing zone
-void Zone::CheckAdjZones(int workers, int goods, int &changed){
+void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainList){
     
     bool power = false; //Is the zone adjacent to a powerline?
     int adjPop1 = 0; //# adjacent zones w/population >= 1
@@ -49,27 +49,41 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed){
     int adjPop3 = 0; //# adjacent zones w/population >= 3
     int adjPop4 = 0; //# adjacent zones w/population >= 4
 
-    for(auto iter: adjZones){
-        cout << "TEST: Adjacency list analysis loop entered." << endl;
+    for(auto it : mainList){
 
-        if(iter.GetZoneType() == 'T'){
-            power = true;
-        }
+    //Check that current zone isn't empty
+    if(it.GetZoneType() == 'T' || it.GetZoneType() == 'P'|| it.GetZoneType() == '#' || it.GetZoneType() == '-' || it.GetZoneType() == 'R' || it.GetZoneType() == 'I' || it.GetZoneType() == 'C'){
 
-        if(iter.GetPop() >= 4){
-            ++adjPop4;
+        for(auto iter: mainList){
+
+            //Check that adjacent zone isn't empty
+            if(iter.GetZoneType() == 'T' || iter.GetZoneType() == 'P'|| iter.GetZoneType() == '#' || iter.GetZoneType() == '-' || iter.GetZoneType() == 'R' || iter.GetZoneType() == 'I' || iter.GetZoneType() == 'C'){
+
+                //Check that zone is adjacent
+                if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
+
+                    //If adjacent, analyze for growth conditions
+                    if(iter.GetZoneType() == 'T'){
+                            power = true;
+                    }
+
+                    if(iter.GetPop() >= 4){
+                            ++adjPop4;
+                    }
+                    else if(iter.GetPop() >= 3){
+                            ++adjPop3;
+                    }
+                    else if(iter.GetPop() >= 2){
+                            ++adjPop2;
+                    }
+                    else if(iter.GetPop() >= 1){
+                            ++adjPop1;
+                    }
+                    else{}
+                }
+            }
         }
-        else if(iter.GetPop() >= 3){
-            ++adjPop3;
-        }
-        else if(iter.GetPop() >= 2){
-            ++adjPop2;
-        }
-        else if(iter.GetPop() >= 1){
-            ++adjPop1;
-        }
-        else{}
-    } //Analyzes adjacent zones to find possible growth conditions
+    }
 
     if(zoneType == 'C'){
 
@@ -142,8 +156,4 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed){
 
     }
  *///Check conditions for industrial zone growth
-}
-
-void Zone::SetAdjList(Zone adjZone){
-    adjZones.push_back(adjZone);
 }
