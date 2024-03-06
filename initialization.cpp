@@ -63,27 +63,3 @@ void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate){
         } //Increase x-coord by 1 until end of line, then reset and increase y-coord by 1
     }
 }
-
-void SetAdjLists(list<Zone> &mainList){
-
-    for(auto it : mainList){
-
-        //Check that current zone isn't empty
-        if(it.GetZoneType() == 'T' || it.GetZoneType() == 'P'|| it.GetZoneType() == '#' || it.GetZoneType() == '-' || it.GetZoneType() == 'R' || it.GetZoneType() == 'I' || it.GetZoneType() == 'C'){
-
-            for(auto iter: mainList){
-
-                //Check that adjacent zone isn't empty
-                if(iter.GetZoneType() == 'T' || iter.GetZoneType() == 'P'|| iter.GetZoneType() == '#' || iter.GetZoneType() == '-' || iter.GetZoneType() == 'R' || iter.GetZoneType() == 'I' || iter.GetZoneType() == 'C'){
-
-                    //Check that zone is adjacent
-                    if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
-
-                        //If adjacent, add to current zone's adjacency list
-                        it.SetAdjList(iter);
-                    }
-                }
-            }
-        }
-    }
-}
