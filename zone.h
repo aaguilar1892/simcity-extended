@@ -12,7 +12,9 @@ class Zone{
         int y; //x & y coordinates of zone
 
         char zoneType;
-        int numPop; //Variables for zone population & type
+        int numPop; 
+        int numWorkers;
+        int numGoods; //Variables for zone population, type, # available workers & goods
 
         bool prevChanged;
 
@@ -28,6 +30,8 @@ class Zone{
         int Gety();
         char GetZoneType(); //Gets for zone coordinates and type
         int GetPop(); //Get zone population
+        int GetWorkers();
+        int GetGoods(); //Gets for # available workers and goods in a zone
         
 
         void CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainList); //Analyze zones
