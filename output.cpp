@@ -21,7 +21,7 @@ void printOutput(list<Zone> &mainList){
     for(auto it = mainList.begin(); it != mainList.end(); ++it){
         if(it->GetZoneType() == 'R'|| it->GetZoneType() == 'I' || it->GetZoneType() == 'C'){
             if(it->GetPop() > 0){
-                graph[it->Gety()][it->Getx()]= it->GetPop();
+                graph[it->Gety()][it->Getx()]= to_string(it->GetPop());
             }else{
                 graph[it->Gety()][it->Getx()]= it->GetZoneType();
             }}else{
