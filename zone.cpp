@@ -58,7 +58,6 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
     int adjPop2 = 0; //# adjacent zones w/population >= 2
     int adjPop3 = 0; //# adjacent zones w/population >= 3
     int adjPop4 = 0; //# adjacent zones w/population >= 4
-    prevChanged = false;
 
     //Check that current zone isn't empty
     if(zoneType == 'T' || zoneType == 'P'|| zoneType == '#' || zoneType == '-' || zoneType == 'R' || zoneType == 'I' || zoneType == 'C'){
@@ -76,16 +75,16 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
                             power = true;
                     }
 
-                    if(iter.GetPop() >= 4 && iter.prevChanged == false){
+                    if((iter.GetPop() >= 4 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 4)){
                             ++adjPop4;
                     }
-                    else if(iter.GetPop() >= 3 && iter.prevChanged == false){
+                    else if((iter.GetPop() >= 3 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 3)){
                             ++adjPop3;
                     }
-                    else if(iter.GetPop() >= 2 && iter.prevChanged == false){
+                    else if((iter.GetPop() >= 2 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 2)){
                             ++adjPop2;
                     }
-                    else if(iter.GetPop() >= 1 && iter.prevChanged == false){
+                    else if((iter.GetPop() >= 1 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 1)){
                             ++adjPop1;
                     }
                     else{}
