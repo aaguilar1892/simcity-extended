@@ -2,13 +2,6 @@
 #include "output.h"
 using namespace std;
 
-void ResetChanges(list<Zone> &mainList){
-
-    for(auto it : mainList){
-        it.SetPrevChanged(false);
-    }
-}
-
 int main(){
     
     int timeLimit;
@@ -22,26 +15,22 @@ int main(){
     
     InitializeSim(mainList, timeLimit, refreshRate); //Initializes mainList, timeLimit, refreshRate, & zone coordinates
     
-    //Test time limit & refresh rate assigned correctly
-    /*
-     cout << "Time limit: " << timeLimit << endl;
-     cout << "Refresh rate: " << refreshRate << endl;
-     */
-    //Test zone coordinates assigned correctly
+    int changed=0; //# of changes in time step
     
-    /*for(auto it : resident){
-     
-     cout << it.Getx() << ", " << it.Gety() << endl;
-     }*/
-    int changed=0;
-    
+    //Analyze every zone during each time step until time limit is reached
     for(int i = 0; i < timeLimit; ++i){
         changed=0;
         ResetChanges(mainList);
         
+        //Analyze zone
         for(auto& it : mainList){
-            it.CheckAdjZones(workers, goods, changed, mainList);//Analyze zone
+            it.CheckAdjZones(workers, goods, changed, mainList);
         }
+
+        //Reset all zones to unchanged
+        for(auto& it : mainList){
+            it.SetPrevChanged(false);
+        } 
         
         //if there is no change inbetween it stops the loop
         if(changed == 0){
@@ -53,16 +42,14 @@ int main(){
             printOutput(mainList);
         }
 
+        //Calculate total # available workers & goods
         workers = myZone.CalcWorkers(mainList, workers);
-        goods = myZone.CalcGoods(mainList, workers); //Calculate total # available workers & goods
+        goods = myZone.CalcGoods(mainList, workers); 
 
     cout<<"Time Step: "<<i+1<<endl;
     cout<<"Available Workers: "<<workers<<endl;
     cout<<"Available Goods: "<<goods<<endl;
-}
-
-    //Analyze every zone during each time step until time limit is reached
-    
+}   
     
     //final print
     printOutput(mainList);
