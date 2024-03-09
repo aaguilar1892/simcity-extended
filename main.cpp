@@ -24,7 +24,6 @@ int main(){
     //Analyze every zone during each time step until time limit is reached
     for(int i = 0; i < timeLimit; ++i){
         changed=0;
-        ResetChanges(mainList);
         
         //Analyze zone
         for(auto& it : mainList){
