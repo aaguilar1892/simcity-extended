@@ -16,6 +16,10 @@ int main(){
     InitializeSim(mainList, timeLimit, refreshRate); //Initializes mainList, timeLimit, refreshRate, & zone coordinates
     
     int changed=0; //# of changes in time step
+
+    printOutput(mainList); //Output initial state
+    cout << "--Initial State --" << endl;
+    cout << endl;
     
     //Analyze every zone during each time step until time limit is reached
     for(int i = 0; i < timeLimit; ++i){
@@ -44,11 +48,12 @@ int main(){
 
         //Calculate total # available workers & goods
         workers = myZone.CalcWorkers(mainList, workers);
-        goods = myZone.CalcGoods(mainList, workers); 
+        goods = myZone.CalcGoods(mainList, goods); 
 
     cout<<"Time Step: "<<i+1<<endl;
     cout<<"Available Workers: "<<workers<<endl;
     cout<<"Available Goods: "<<goods<<endl;
+    cout<<endl;
 }   
     
     //final print
