@@ -36,6 +36,8 @@ class Zone{
         int GetGoods(); //Gets for # available workers and goods in a zone
         
 
-        void CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainList); //Analyze zones
+        void CheckAdjZonesC(int &workers, int &goods, int &changed, list<Zone> &mainList); //Analyze commercial zones
+        void CheckAdjZonesR(int &workers, int &goods, int &changed, list<Zone> &mainList); //Analyze residential zones
+        void CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &mainList); //Analyze industrial zones
         Zone(); //Default constructor for zone objects
 };
