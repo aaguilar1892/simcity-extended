@@ -4,13 +4,14 @@ Group 207-2
 
 Group Members: Alexis Aguilar, Corinna Martin, Claire Pacquing, Britton Womble
 
-Compile Method:
+    Compile Method:
     g++ -o simcity main.cpp intialization.cpp zone.cpp output.cpp
     ./simcity
 
-Optional Compile Method with Makefile:
+    Optional Compile Method with Makefile:
     make
     ./simcity
+
 Files needed:
     config1.txt , region1.csv
     
