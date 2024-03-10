@@ -51,7 +51,7 @@ int Zone::GetGoods(){
 }
 
 //Function for analyzing zone
-void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainList){
+void Zone::CheckAdjZonesC(int workers, int goods, int &changed, list<Zone> &mainList){
     
     bool power = false; //Is the zone adjacent to a powerline?
     int adjPop1 = 0; //# adjacent zones w/population >= 1
@@ -118,8 +118,50 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
         }
         else{}
     } //Check conditions for commercial zone growth
+}
 
- //Outline for industrial and Residential, please keep in ++changed, in all if or else if statements, in else statement do not add changed
+void Zone::CheckAdjZonesR(int workers, int goods, int &changed, list<Zone> &mainList){
+    
+    bool power = false; //Is the zone adjacent to a powerline?
+    int adjPop1 = 0; //# adjacent zones w/population >= 1
+    int adjPop2 = 0; //# adjacent zones w/population >= 2
+    int adjPop3 = 0; //# adjacent zones w/population >= 3
+    int adjPop4 = 0; //# adjacent zones w/population >= 4
+
+    //Check that current zone isn't empty
+    if(zoneType == 'T' || zoneType == 'P'|| zoneType == '#' || zoneType == '-' || zoneType == 'R' || zoneType == 'I' || zoneType == 'C'){
+
+        for(auto iter: mainList){
+
+            //Check that adjacent zone isn't empty
+            if(iter.GetZoneType() == 'T' || iter.GetZoneType() == 'P'|| iter.GetZoneType() == '#' || iter.GetZoneType() == '-' || iter.GetZoneType() == 'R' || iter.GetZoneType() == 'I' || iter.GetZoneType() == 'C'){
+
+                //Check that zone is adjacent
+                if((iter.Getx() == x || iter.Getx() == x + 1 || iter.Getx() == x - 1) && (iter.Gety() == y || iter.Gety() == y + 1 || iter.Gety() == y - 1) && (!(iter.Getx() == x && iter.Gety() == y))){
+
+                    //If adjacent, analyze for growth conditions
+                    if(iter.GetZoneType() == 'T'){
+                            power = true;
+                    }
+
+                    if((iter.GetPop() >= 4 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 4)){
+                            ++adjPop4;
+                    }
+                    else if((iter.GetPop() >= 3 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 3)){
+                            ++adjPop3;
+                    }
+                    else if((iter.GetPop() >= 2 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 2)){
+                            ++adjPop2;
+                    }
+                    else if((iter.GetPop() >= 1 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 1)){
+                            ++adjPop1;
+                    }
+                    else{}
+                }
+            }
+        }
+    }
+
     if(zoneType == 'R'){
         if(power == true && numPop == 0){
             ++numPop;
@@ -159,22 +201,75 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
         } 
         else {}    
     } //Check conditions for residential zone growth
-    /*if(zoneType == 'I'){
-        if(){
-            
-            ++changed;
-            prevChanged = true;
-        }else if(){
-            
-            ++changed;
-            prevChanged = true;
-        }else if(){
-            
-            ++changed;
-            prevChanged = true;
-        }else{}
+}
 
+void Zone::CheckAdjZonesI(int workers, int goods, int &changed, list<Zone> &mainList){
+    
+    bool power = false; //Is the zone adjacent to a powerline?
+    int adjPop1 = 0; //# adjacent zones w/population >= 1
+    int adjPop2 = 0; //# adjacent zones w/population >= 2
+    int adjPop3 = 0; //# adjacent zones w/population >= 3
+    int adjPop4 = 0; //# adjacent zones w/population >= 4
+
+    //Check that current zone isn't empty
+    if(zoneType == 'T' || zoneType == 'P'|| zoneType == '#' || zoneType == '-' || zoneType == 'R' || zoneType == 'I' || zoneType == 'C'){
+
+        for(auto iter: mainList){
+
+            //Check that adjacent zone isn't empty
+            if(iter.GetZoneType() == 'T' || iter.GetZoneType() == 'P'|| iter.GetZoneType() == '#' || iter.GetZoneType() == '-' || iter.GetZoneType() == 'R' || iter.GetZoneType() == 'I' || iter.GetZoneType() == 'C'){
+
+                //Check that zone is adjacent
+                if((iter.Getx() == x || iter.Getx() == x + 1 || iter.Getx() == x - 1) && (iter.Gety() == y || iter.Gety() == y + 1 || iter.Gety() == y - 1) && (!(iter.Getx() == x && iter.Gety() == y))){
+
+                    //If adjacent, analyze for growth conditions
+                    if(iter.GetZoneType() == 'T'){
+                            power = true;
+                    }
+
+                    if((iter.GetPop() >= 4 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 4)){
+                            ++adjPop4;
+                    }
+                    else if((iter.GetPop() >= 3 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 3)){
+                            ++adjPop3;
+                    }
+                    else if((iter.GetPop() >= 2 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 2)){
+                            ++adjPop2;
+                    }
+                    else if((iter.GetPop() >= 1 && iter.prevChanged == false) || (iter.prevChanged == true && iter.GetPop() - 1 >= 1)){
+                            ++adjPop1;
+                    }
+                    else{}
+                }
+            }
+        }
     }
+
+    if(zoneType == 'I'){
+        if(numPop == 0 && power == true && workers >= 2){
+            ++numPop;
+            workers = 0;
+            ++goods;
+            ++changed;
+            prevChanged = true;
+        }else if(numPop == 0 && adjPop1 >= 1 && workers >= 2){
+            ++numPop;
+            workers = 0;
+            ++goods;
+            ++changed;
+            prevChanged = true;
+        }else if(numPop == 1 && adjPop1 >= 2 && workers >= 2){
+            ++numPop;
+            workers = 0;
+            ++goods;
+            ++changed;
+            prevChanged = true;
+        }else if(numPop == 2 && adjPop2 >= 4 && workers >= 2){
+            ++numPop;
+            workers = 0;
+            ++goods;
+            ++changed;
+        }else{}
  *///Check conditions for industrial zone growth
 }
 
