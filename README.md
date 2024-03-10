@@ -5,7 +5,7 @@ Group 207-2
 Group Members: Alexis Aguilar, Corinna Martin, Claire Pacquing, Britton Womble
 
 Compile Method:
-    g++ -o simcity main.cpp intialization.cpp zone.cpp output.cpp WorkersAndGoods.cpp
+    g++ -o simcity main.cpp intialization.cpp zone.cpp output.cpp
 
 Files needed:
     config1.txt , region1.csv
