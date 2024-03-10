@@ -50,7 +50,7 @@ int Zone::GetGoods(){
     return numGoods;
 }
 
-//Function for analyzing zone
+//Function for analyzing commercial zones
 void Zone::CheckAdjZonesC(int &workers, int &goods, int &changed, list<Zone> &mainList){
     
     bool power = false; //Is the zone adjacent to a powerline?
@@ -93,6 +93,7 @@ void Zone::CheckAdjZonesC(int &workers, int &goods, int &changed, list<Zone> &ma
         }
     }
 
+    //Check conditions for commercial zone growth
     if(zoneType == 'C'){
 
         if(power == true && numPop == 0 && workers >= 1 && goods >= 1){
@@ -117,9 +118,10 @@ void Zone::CheckAdjZonesC(int &workers, int &goods, int &changed, list<Zone> &ma
             prevChanged = true;
         }
         else{}
-    } //Check conditions for commercial zone growth
+    } 
 }
 
+//Function for analyzing residential zones
 void Zone::CheckAdjZonesR(int &workers, int &goods, int &changed, list<Zone> &mainList){
     
     bool power = false; //Is the zone adjacent to a powerline?
@@ -162,6 +164,7 @@ void Zone::CheckAdjZonesR(int &workers, int &goods, int &changed, list<Zone> &ma
         }
     }
 
+    //Check conditions for residential zone growth
     if(zoneType == 'R'){
         if(power == true && numPop == 0){
             ++numPop;
@@ -200,9 +203,10 @@ void Zone::CheckAdjZonesR(int &workers, int &goods, int &changed, list<Zone> &ma
             prevChanged = true;
         } 
         else {}    
-    } //Check conditions for residential zone growth
+    } 
 }
 
+//Function for analyzing industrial zones
 void Zone::CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &mainList){
     
     bool power = false; //Is the zone adjacent to a powerline?
@@ -245,6 +249,7 @@ void Zone::CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &ma
         }
     }
 
+    //Check conditions for industrial zone growth
     if(zoneType == 'I'){
         if(numPop == 0 && power == true && workers >= 2){
             ++numPop;
@@ -270,10 +275,10 @@ void Zone::CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &ma
             ++goods;
             ++changed;
         }else{}
- //Check conditions for industrial zone growth
     }
 }
 
+//Set zone to changed or unchanged during the current time step
 void Zone::SetPrevChanged(bool change){
     prevChanged = change;
 }
