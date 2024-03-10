@@ -249,25 +249,25 @@ void Zone::CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &ma
         if(numPop == 0 && power == true && workers >= 2){
             ++numPop;
             workers = 0;
-            ++goods;
+            ++numGoods;
             ++changed;
             prevChanged = true;
         }else if(numPop == 0 && adjPop1 >= 1 && workers >= 2){
             ++numPop;
             workers = 0;
-            ++goods;
+            ++numGoods;
             ++changed;
             prevChanged = true;
         }else if(numPop == 1 && adjPop1 >= 2 && workers >= 2){
             ++numPop;
             workers = 0;
-            ++goods;
+            ++numGoods;
             ++changed;
             prevChanged = true;
         }else if(numPop == 2 && adjPop2 >= 4 && workers >= 2){
             ++numPop;
             workers = 0;
-            ++goods;
+            ++numGoods;
             ++changed;
         }else{}
  //Check conditions for industrial zone growth
