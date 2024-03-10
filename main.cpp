@@ -25,9 +25,17 @@ int main(){
     for(int i = 0; i < timeLimit; ++i){
         changed=0;
         
-        //Analyze zone
+        //Analyze commercial, then industrial, then residential zones
         for(auto& it : mainList){
-            it.CheckAdjZones(workers, goods, changed, mainList);
+            it.CheckAdjZonesC(workers, goods, changed, mainList);
+        }
+
+        for(auto& it : mainList){
+            it.CheckAdjZonesI(workers, goods, changed, mainList);
+        }
+
+        for(auto& it : mainList){
+            it.CheckAdjZonesR(workers, goods, changed, mainList);
         }
 
         //Reset all zones to unchanged
