@@ -25,8 +25,7 @@ class Zone{
         void SetPop(int pop); //Set zone population
         void SetPrevChanged(bool change); 
 
-        int CalcWorkers(list<Zone> mainList, int workers);
-        int CalcGoods(list<Zone> mainList, int goods); //Calculate total # available workers & goods
+        int CalcWorkers(list<Zone> mainList, int workers); //Calculate total # available workers
 
         int Getx();
         int Gety();
