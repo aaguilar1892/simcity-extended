@@ -41,13 +41,6 @@ void printOutput(list<Zone> &mainList){
            }
            cout<<endl;
        }
-    for (auto &zone : mainList) {
-        if (zone.GetPollutionLevel() > 0) {
-            cout << zone.GetPollutionLevel() << " ";
-        } else {
-
-        }
-    }
 
 }
 
@@ -142,18 +135,13 @@ void printArea(list<Zone> &mainList){
             }else{}
         }
     }
-
-    for (auto &zone : mainList) {
-        if (zone.GetPollutionLevel() > 0) {
-            cout << zone.GetPollutionLevel() << " ";
-        } else {}
-    }
     
     //print pops
     cout<<"Populations for specific area:"<<endl;
     cout<<"Residental Zone: "<<resPop<<endl;
     cout<<"Industrial Zone: "<<indPop<<endl;
     cout<<"Commercial Zone: "<<comPop<<endl;
+    
 }
 
 void printPop(list<Zone> &mainList){
@@ -171,12 +159,6 @@ void printPop(list<Zone> &mainList){
         }else if(it->GetZoneType() == 'I'&& it->GetPop()> 0){
             indPop=indPop + it->GetPop();
         }else{}
-    }
-
-    for (auto &zone : mainList) {
-        if (zone.GetPollutionLevel() > 0) {
-            cout << zone.GetPollutionLevel() << " ";
-        } else {}
     }
        
     //print pops

@@ -5,7 +5,6 @@ Zone::Zone(){
     numPop = 0;
     numWorkers = 0;
     numGoods = 0;
-    pollutionLevel = 0;
 }
 
 //Set and gets for zone coordinates and type
@@ -53,7 +52,7 @@ int Zone::GetGoods(){
 
 //Function for analyzing zone
 void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainList){
-
+    
     bool power = false; //Is the zone adjacent to a powerline?
     int adjPop1 = 0; //# adjacent zones w/population >= 1
     int adjPop2 = 0; //# adjacent zones w/population >= 2
@@ -157,53 +156,20 @@ void Zone::CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainL
             ++numWorkers;
             ++changed;
             prevChanged = true;
-        }
-        else {}
+        } 
+        else {}    
     } //Check conditions for residential zone growth
-
-    if(zoneType == 'I'){
-        bool power = false;
-        // Search for adjacent power sources
-        for(auto iter: mainList) {
-            // Existing Adjacent Zone Checks ...
-            if (iter.GetZoneType() == 'T' || iter.GetZoneType() == 'P') {
-                power = true;
-            }
-        }
-
-        if ((power || adjPop1 >= 1) && numPop == 0 && workers >= 2){
-            ++numPop;
-            --workers;
-            ++changed;
-            prevChanged = true;
-            pollutionLevel = numPop;  // Set initial pollution
-        } else if(adjPop1 >= 2 && numPop == 1 && workers >= 2){
-            ++numPop;
-            --workers;
-            ++changed;
-            prevChanged = true;
-            pollutionLevel = numPop;
-        } else if(adjPop2 >= 4 && numPop == 2 && workers >= 2){
-            ++numPop;
-            --workers;
-            ++changed;
-            prevChanged = true;
-            pollutionLevel = numPop;
-        } else {
-            pollutionLevel = numPop; // Update even if no growth
-        }
-    }
     /*if(zoneType == 'I'){
         if(){
-
+            
             ++changed;
             prevChanged = true;
         }else if(){
-
+            
             ++changed;
             prevChanged = true;
         }else if(){
-
+            
             ++changed;
             prevChanged = true;
         }else{}
@@ -231,37 +197,4 @@ int Zone::CalcGoods(list<Zone> mainList, int goods){
         goods = goods + it.GetGoods();
     }
     return goods;
-}
-
-void Zone::SetPollutionLevel(int level) {
-    pollutionLevel = level;
-}
-
-int Zone::GetPollutionLevel() {
-    return pollutionLevel;
-}
-
-void Zone::spreadPollution(Zone &source, list<Zone> &mainList) {
-    int x = source.Getx();
-    int y = source.Gety();
-    int pollution = source.GetPollutionLevel();
-
-    // Iterate in a 3x3 square around the source zone
-    for (int dx = -1; dx <= 1; ++dx) {
-        for (int dy = -1; dy <= 1; ++dy) {
-            int adjX = x + dx;
-            int adjY = y + dy;
-
-            // Check if adjacent cell is within bounds
-            if (adjX >= 0 && adjX < mainList.front().Getx() && adjY >= 0 && adjY < mainList.front().Gety()) {
-                for (auto &zone : mainList) {
-                    if (zone.Getx() == adjX && zone.Gety() == adjY) {
-                        // Adjust pollution based on distance
-                        int spreadAmount = max(0, pollution - abs(dx) - abs(dy));
-                        zone.SetPollutionLevel(zone.GetPollutionLevel() + spreadAmount);
-                    }
-                }
-            }
-        }
-    }
 }
