@@ -51,7 +51,7 @@ int Zone::GetGoods(){
 }
 
 //Function for analyzing zone
-void Zone::CheckAdjZonesC(int workers, int goods, int &changed, list<Zone> &mainList){
+void Zone::CheckAdjZonesC(int &workers, int &goods, int &changed, list<Zone> &mainList){
     
     bool power = false; //Is the zone adjacent to a powerline?
     int adjPop1 = 0; //# adjacent zones w/population >= 1
@@ -120,7 +120,7 @@ void Zone::CheckAdjZonesC(int workers, int goods, int &changed, list<Zone> &main
     } //Check conditions for commercial zone growth
 }
 
-void Zone::CheckAdjZonesR(int workers, int goods, int &changed, list<Zone> &mainList){
+void Zone::CheckAdjZonesR(int &workers, int &goods, int &changed, list<Zone> &mainList){
     
     bool power = false; //Is the zone adjacent to a powerline?
     int adjPop1 = 0; //# adjacent zones w/population >= 1
@@ -203,7 +203,7 @@ void Zone::CheckAdjZonesR(int workers, int goods, int &changed, list<Zone> &main
     } //Check conditions for residential zone growth
 }
 
-void Zone::CheckAdjZonesI(int workers, int goods, int &changed, list<Zone> &mainList){
+void Zone::CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &mainList){
     
     bool power = false; //Is the zone adjacent to a powerline?
     int adjPop1 = 0; //# adjacent zones w/population >= 1
@@ -270,7 +270,8 @@ void Zone::CheckAdjZonesI(int workers, int goods, int &changed, list<Zone> &main
             ++goods;
             ++changed;
         }else{}
- *///Check conditions for industrial zone growth
+ //Check conditions for industrial zone growth
+    }
 }
 
 void Zone::SetPrevChanged(bool change){
