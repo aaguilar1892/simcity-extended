@@ -9,8 +9,14 @@ Compile Method:
 
 Files needed:
     config1.txt , region1.csv
+    
+    Format configuration file as follows:
+    
+    Region Layout:
+    Time Limit:
+    Refresh Rate:
 
 Program Function:
-    Currently, it inputs the region and timesteps then it outputs the initial state. It propts for specific coordinates to look at a specific zone and outputs that zone.
+    Currently, it inputs the region and timesteps then it outputs the initial state. It prompts for specific coordinates to look at a specific zone and outputs that zone.
 
 
