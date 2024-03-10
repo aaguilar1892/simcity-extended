@@ -313,9 +313,9 @@ void Zone::spreadPollution(list<Zone> &mainList){
             // Calculate distance between current zone and each zone in mainList
             int dx = abs(zone.Getx() - x);
             int dy = abs(zone.Gety() - y);
-            int distance = max(dx, dy);
+            //int distance = max(dx, dy);
             if((dx == 1 && dy <= 1) || (dy == 1 && dx <= 1)){ // Adjacent cells
-                int decayFactor = 2;
+                //int decayFactor = 2;
                 int spreadPollution = pollutionLevel - 1; // Pollution spreads at one less unit
                 zone.setPollutionLevel(zone.getPollutionLevel() + spreadPollution);
             }
