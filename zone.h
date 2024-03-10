@@ -15,7 +15,7 @@ class Zone{
         int numWorkers;
         int numGoods; //Variables for zone population, type, # available workers & goods
 
-        bool prevChanged;
+        bool prevChanged; //Variable for whether or not the zone was changed during the current time step
 
     public:
 
@@ -23,7 +23,7 @@ class Zone{
         void Sety(int yCoord);
         void SetZoneType(char type); //Sets for zone coordinates and type
         void SetPop(int pop); //Set zone population
-        void SetPrevChanged(bool change); 
+        void SetPrevChanged(bool change); //Set zone to changed or unchanged
 
         int CalcWorkers(list<Zone> mainList, int workers); //Calculate total # available workers
 
