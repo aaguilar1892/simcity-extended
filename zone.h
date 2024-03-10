@@ -7,16 +7,16 @@ class Zone{
 
     private:
 
-        int x;
-        int y; //x & y coordinates of zone
+        int x{};
+        int y{}; //x & y coordinates of zone
 
-        char zoneType;
+        char zoneType{};
         int numPop; 
         int numWorkers;
         int numGoods; //Variables for zone population, type, # available workers & goods
 
-        bool prevChanged;
-
+        bool prevChanged{};
+        int pollutionLevel;
     public:
 
         void Setx(int xCoord);
@@ -38,4 +38,9 @@ class Zone{
 
         void CheckAdjZones(int workers, int goods, int &changed, list<Zone> &mainList); //Analyze zones
         Zone(); //Default constructor for zone objects
+
+        void SetPollutionLevel(int level);
+        int GetPollutionLevel();
+        void spreadPollution(Zone &source, list<Zone> &mainList);
+
 };

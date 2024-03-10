@@ -33,7 +33,13 @@ int main(){
         //Reset all zones to unchanged
         for(auto& it : mainList){
             it.SetPrevChanged(false);
-        } 
+        }
+
+        for (auto &zone : mainList) {
+            if (zone.GetZoneType() == 'I') { // Only industrial zones generate pollution
+                zone.spreadPollution(zone, mainList);
+            }
+        }
         
         //if there is no change inbetween it stops the loop
         if(changed == 0){
