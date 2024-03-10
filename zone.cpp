@@ -97,21 +97,21 @@ void Zone::CheckAdjZonesC(int &workers, int &goods, int &changed, list<Zone> &ma
 
         if(power == true && numPop == 0 && workers >= 1 && goods >= 1){
             ++numPop;
-            --numGoods;
+            --goods;
             --numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if(numPop == 0 && adjPop1 >= 1 && workers >= 1 && goods >= 1){
             ++numPop;
-            --numGoods;
+            --goods;
             --numWorkers;
             ++changed;
             prevChanged = true;
         }
         else if(numPop == 1 && adjPop1 >= 2 && workers >= 1 && goods >= 1){
             ++numPop;
-            --numGoods;
+            --goods;
             --numWorkers;
             ++changed;
             prevChanged = true;
@@ -249,25 +249,25 @@ void Zone::CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &ma
         if(numPop == 0 && power == true && workers >= 2){
             ++numPop;
             workers = 0;
-            ++numGoods;
+            ++goods;
             ++changed;
             prevChanged = true;
         }else if(numPop == 0 && adjPop1 >= 1 && workers >= 2){
             ++numPop;
             workers = 0;
-            ++numGoods;
+            ++goods;
             ++changed;
             prevChanged = true;
         }else if(numPop == 1 && adjPop1 >= 2 && workers >= 2){
             ++numPop;
             workers = 0;
-            ++numGoods;
+            ++goods;
             ++changed;
             prevChanged = true;
         }else if(numPop == 2 && adjPop2 >= 4 && workers >= 2){
             ++numPop;
             workers = 0;
-            ++numGoods;
+            ++goods;
             ++changed;
         }else{}
  //Check conditions for industrial zone growth
@@ -285,12 +285,4 @@ int Zone::CalcWorkers(list<Zone> mainList, int workers){
         workers = workers + it.GetWorkers();
     }
     return workers;
-}
-
-int Zone::CalcGoods(list<Zone> mainList, int goods){
-
-    for(auto it: mainList){
-        goods = goods + it.GetGoods();
-    }
-    return goods;
 }
