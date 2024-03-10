@@ -51,6 +51,7 @@ void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate){
         if(myZone == 'R' || myZone == 'I' || myZone == 'C' || myZone == 'T' || myZone == '-' || myZone == '#' || myZone == 'P'){
             
             currZone.SetZoneType(myZone);
+            //currZone.setPollutionLevel(0); //Set pollution level to 0
 
             //Assign x & y coordinates of zone
             currZone.Setx(xCount);

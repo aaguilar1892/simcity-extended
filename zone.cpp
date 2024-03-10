@@ -245,6 +245,7 @@ void Zone::CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &ma
                     }
                     else{}
                 }
+                pollutionLevel =numPop; //Pollution equal to population
             }
         }
     }
@@ -257,23 +258,27 @@ void Zone::CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &ma
             ++goods;
             ++changed;
             prevChanged = true;
+            pollutionLevel =numPop; //Pollution equal to population
         }else if(numPop == 0 && adjPop1 >= 1 && workers >= 2){
             ++numPop;
             workers = 0;
             ++goods;
             ++changed;
             prevChanged = true;
+            pollutionLevel =numPop; //Pollution equal to population
         }else if(numPop == 1 && adjPop1 >= 2 && workers >= 2){
             ++numPop;
             workers = 0;
             ++goods;
             ++changed;
             prevChanged = true;
+            pollutionLevel =numPop; //Pollution equal to population
         }else if(numPop == 2 && adjPop2 >= 4 && workers >= 2){
             ++numPop;
             workers = 0;
             ++goods;
             ++changed;
+            pollutionLevel =numPop; //Pollution equal to population
         }else{}
     }
 }
@@ -290,4 +295,30 @@ int Zone::CalcWorkers(list<Zone> mainList, int workers){
         workers = workers + it.GetWorkers();
     }
     return workers;
+}
+
+//Set pollution level of zone
+void Zone::setPollutionLevel(int pollution){
+    pollutionLevel = pollution;
+}
+
+//Get pollution level of zone
+int Zone::getPollutionLevel(){
+    return pollutionLevel;
+}
+
+void Zone::spreadPollution(list<Zone> &mainList){
+    if(zoneType == 'I' && numPop > 0){ // If the zone is industrial and populated
+        for(auto &zone : mainList){
+            // Calculate distance between current zone and each zone in mainList
+            int dx = abs(zone.Getx() - x);
+            int dy = abs(zone.Gety() - y);
+            int distance = max(dx, dy);
+            if((dx == 1 && dy <= 1) || (dy == 1 && dx <= 1)){ // Adjacent cells
+                int decayFactor = 2;
+                int spreadPollution = pollutionLevel - 1; // Pollution spreads at one less unit
+                zone.setPollutionLevel(zone.getPollutionLevel() + spreadPollution);
+            }
+        }
+    }
 }

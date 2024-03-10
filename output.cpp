@@ -16,19 +16,19 @@ void printOutput(list<Zone> &mainList){
     //cout<<row<<endl;
     //cout<<col<<endl;
     //create graph
-    string graph[row+1][col+1];
-   
-   //get zonetype, if pop in that zone type is above zero then convert pop to string and put in graph in place of zone type
-    for(auto it = mainList.begin(); it != mainList.end(); ++it){
-        if(it->GetZoneType() == 'R'|| it->GetZoneType() == 'I' || it->GetZoneType() == 'C'){
-            if(it->GetPop() > 0){
-                graph[it->Gety()][it->Getx()]= to_string(it->GetPop());
-            }else{
-                graph[it->Gety()][it->Getx()]= it->GetZoneType();
-            }}else{
-                graph[it->Gety()][it->Getx()]= it->GetZoneType();
-            }
-    }
+        vector<vector<string>> graph(row+1, vector<string>(col+1));
+       
+       //get zonetype, if pop in that zone type is above zero then convert pop to string and put in graph in place of zone type
+        for(auto it = mainList.begin(); it != mainList.end(); ++it){
+            if(it->GetZoneType() == 'R'|| it->GetZoneType() == 'I' || it->GetZoneType() == 'C'){
+                if(it->GetPop() > 0){
+                    graph[it->Gety()][it->Getx()]= to_string(it->GetPop());
+                }else{
+                    graph[it->Gety()][it->Getx()]= it->GetZoneType();
+                }}else{
+                    graph[it->Gety()][it->Getx()]= it->GetZoneType();
+                }
+        }
        //print the graph
        for(int i= 0; i<= row; ++i){
            for(int j= 0; j<= col; ++j){
@@ -166,4 +166,67 @@ void printPop(list<Zone> &mainList){
     cout<<"Residental Zone: "<<resPop<<endl;
     cout<<"Industrial Zone: "<<indPop<<endl;
     cout<<"Commercial Zone: "<<comPop<<endl;
+}
+
+/*void printPollution(list<Zone>& mainList) {
+    int row = 0;
+    int col = 0;
+    cout << "Final Regional Pollution State:" << endl;
+    // Assuming you have a similar setup for rows and columns as in printOutput
+    for(int i = 0; i <= row; ++i) {
+        for(int j = 0; j <= col; ++j) {
+            auto it = find_if(mainList.begin(), mainList.end(), [i, j](Zone& zone) {
+                return zone.Getx() == j && zone.Gety() == i;
+            });
+            if (it != mainList.end()) {
+                cout << it->getPollutionLevel() << " ";
+            } else {
+                cout << "0 "; // Assuming zero pollution for non-industrial zones or empty spaces
+            }
+        }
+        cout << endl;
+    }
+}*/
+
+// output.cpp 
+void printPollution(list<Zone> &mainList) {
+    //get max row and col
+    int row=0;
+    int col=0;
+    for( auto it : mainList){
+        if(it.Getx() > col){
+            col= it.Getx();
+        }
+        if(it.Gety() > row){
+            row= it.Gety();
+        }
+    }
+
+    // Create a pollution map
+    int pollutionMap[row+1][col+1]; 
+
+    // Initialize pollution map with 0
+    for (int i = 0; i <= row; i++) {
+        for (int j = 0; j <= col; j++) {
+            pollutionMap[i][j] = 0;
+        }
+    }  
+
+    // Update pollution map based on zone pollution levels
+    for (auto it = mainList.begin(); it != mainList.end(); ++it) {
+        pollutionMap[it->Gety()][it->Getx()] = it->getPollutionLevel();
+    }
+
+    // Print the Pollution Map
+    cout << "Pollution Map:" << endl;
+    for (int i = 0; i <= row; i++) {
+        for (int j = 0; j <= col; j++) {
+            if (pollutionMap[i][j] == 0) {
+                cout << "  "; // Representation for no pollution
+            } else {
+                cout << pollutionMap[i][j] << " "; 
+            }
+        }
+        cout << endl;
+    }
 }

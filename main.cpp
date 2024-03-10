@@ -9,6 +9,7 @@ int main(){
     
     int workers = 0;
     int goods = 0; //Variables for # available workers & goods
+    int totalPollution = 0;
     Zone myZone;
     
     list<Zone> mainList; //List of all zones
@@ -38,6 +39,13 @@ int main(){
         for(auto& it : mainList){
             it.CheckAdjZonesR(workers, goods, changed, mainList);
         }
+        
+        /*for(auto& it : mainList){
+            if (it.GetZoneType() == 'I'){
+                it.setPollutionLevel(it.GetPop()); //Set pollution level of industrial zones to population
+            }
+            it.spreadPollution(mainList); //Spread pollution to adjacent zones
+        }*/
 
         //Reset all zones to unchanged
         for(auto& it : mainList){
@@ -61,6 +69,17 @@ int main(){
     cout<<"Available Workers: "<<workers<<endl;
     cout<<"Available Goods: "<<goods<<endl;
     cout<<endl;
+
+    // Spread pollution 
+        for(auto& it : mainList){
+            it.spreadPollution(mainList);
+        }
+
+        // Update totalPollution
+        totalPollution = 0;
+        for (auto& it : mainList) {
+            totalPollution += it.getPollutionLevel();
+        }
 }   
     
     //final print
@@ -71,6 +90,11 @@ int main(){
     
     //print area wanted by student and get coordinates
     printArea(mainList);
+
+    //print pollution
+    printPollution(mainList);
+    
+    cout<< "Total Pollution: "<<totalPollution<<endl;
 
     return 0;
 }

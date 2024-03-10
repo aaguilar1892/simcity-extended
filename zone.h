@@ -16,6 +16,7 @@ class Zone{
         int numGoods; //Variables for zone population, type, # available workers & goods
 
         bool prevChanged; //Variable for whether or not the zone was changed during the current time step
+        int pollutionLevel; //Variable for the pollution level of the zone
 
     public:
 
@@ -39,4 +40,8 @@ class Zone{
         void CheckAdjZonesR(int &workers, int &goods, int &changed, list<Zone> &mainList); //Analyze residential zones
         void CheckAdjZonesI(int &workers, int &goods, int &changed, list<Zone> &mainList); //Analyze industrial zones
         Zone(); //Default constructor for zone objects
+
+        void setPollutionLevel(int level); //Set pollution level of zone
+        int getPollutionLevel(); //Get pollution level of zone
+        void spreadPollution(list<Zone> &mainList); //Spread pollution to adjacent zones
 };
