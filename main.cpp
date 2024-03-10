@@ -5,10 +5,11 @@ using namespace std;
 int main(){
     
     int timeLimit;
-    int refreshRate;
+    int refreshRate; //Variables for max # time steps & how often time steps are printed to the screen
     
     int workers = 0;
     int goods = 0; //Variables for # available workers & goods
+    int totalPollution = 0;
     Zone myZone;
     
     list<Zone> mainList; //List of all zones
@@ -17,7 +18,8 @@ int main(){
     
     int changed=0; //# of changes in time step
 
-    printOutput(mainList); //Output initial state
+    //Output initial state
+    printOutput(mainList); 
     cout << "--Initial State --" << endl;
     cout << endl;
     
@@ -25,10 +27,25 @@ int main(){
     for(int i = 0; i < timeLimit; ++i){
         changed=0;
         
-        //Analyze zone
+        //Analyze commercial, then industrial, then residential zones
         for(auto& it : mainList){
-            it.CheckAdjZones(workers, goods, changed, mainList);
+            it.CheckAdjZonesC(workers, goods, changed, mainList);
         }
+
+        for(auto& it : mainList){
+            it.CheckAdjZonesI(workers, goods, changed, mainList);
+        }
+
+        for(auto& it : mainList){
+            it.CheckAdjZonesR(workers, goods, changed, mainList);
+        }
+        
+        /*for(auto& it : mainList){
+            if (it.GetZoneType() == 'I'){
+                it.setPollutionLevel(it.GetPop()); //Set pollution level of industrial zones to population
+            }
+            it.spreadPollution(mainList); //Spread pollution to adjacent zones
+        }*/
 
         //Reset all zones to unchanged
         for(auto& it : mainList){
@@ -47,21 +64,37 @@ int main(){
 
         //Calculate total # available workers & goods
         workers = myZone.CalcWorkers(mainList, workers);
-        goods = myZone.CalcGoods(mainList, goods); 
 
     cout<<"Time Step: "<<i+1<<endl;
     cout<<"Available Workers: "<<workers<<endl;
     cout<<"Available Goods: "<<goods<<endl;
     cout<<endl;
+
+    // Spread pollution 
+        for(auto& it : mainList){
+            it.spreadPollution(mainList);
+        }
+
+        // Update totalPollution
+        totalPollution = 0;
+        for (auto& it : mainList) {
+            totalPollution += it.getPollutionLevel();
+        }
 }   
     
     //final print
     printOutput(mainList);
+
     //print final population of each zone
     printPop(mainList);
     
     //print area wanted by student and get coordinates
     printArea(mainList);
+
+    //print pollution
+    printPollution(mainList);
+    
+    cout<< "Total Pollution: "<<totalPollution<<endl;
 
     return 0;
 }
