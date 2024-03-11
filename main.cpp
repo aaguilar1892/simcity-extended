@@ -39,13 +39,6 @@ int main(){
         for(auto& it : mainList){
             it.CheckAdjZonesR(workers, goods, changed, mainList);
         }
-        
-        /*for(auto& it : mainList){
-            if (it.GetZoneType() == 'I'){
-                it.setPollutionLevel(it.GetPop()); //Set pollution level of industrial zones to population
-            }
-            it.spreadPollution(mainList); //Spread pollution to adjacent zones
-        }*/
 
         //Reset all zones to unchanged
         for(auto& it : mainList){
