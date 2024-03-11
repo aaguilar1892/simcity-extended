@@ -20,5 +20,7 @@
 *.pch
 
 # IDEs and Editors
-*.vscode
-*.idea
+.vscode/
+.idea/
+build/
+

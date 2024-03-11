@@ -65,23 +65,23 @@ int main(){
         //Calculate total # available workers & goods
         workers = myZone.CalcWorkers(mainList, workers);
 
-    cout<<"Time Step: "<<i+1<<endl;
-    cout<<"Available Workers: "<<workers<<endl;
-    cout<<"Available Goods: "<<goods<<endl;
-    cout<<endl;
+        cout<<"Time Step: "<<i+1<<endl;
+        cout<<"Available Workers: "<<workers<<endl;
+        cout<<"Available Goods: "<<goods<<endl;
+        cout<<endl;
 
-    // Spread pollution 
+        // Spread pollution 
         for(auto& it : mainList){
             it.spreadPollution(mainList);
         }
+    }
 
-        // Update totalPollution
-        totalPollution = 0;
-        for (auto& it : mainList) {
-            totalPollution += it.getPollutionLevel();
-        }
-}   
-    
+    // Update totalPollution
+    totalPollution = 0;
+    for (auto& it : mainList) {
+        totalPollution += it.getPollutionLevel();
+    }
+
     //final print
     printOutput(mainList);
 
