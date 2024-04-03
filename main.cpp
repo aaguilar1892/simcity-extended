@@ -13,7 +13,7 @@ int main(){
     Zone myZone;
 
     int xmax = 0;
-    int ymax 0; //Variables for maximum value of x & y coordinates of city
+    int ymax = 0; //Variables for maximum value of x & y coordinates of city
     
     list<Zone> mainList; //List of all zones
     
