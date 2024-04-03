@@ -5,6 +5,7 @@ Zone::Zone(){
     numPop = 0;
     numWorkers = 0;
     numGoods = 0;
+    claimed = false;
 }
 
 //Set and gets for zone coordinates and type
