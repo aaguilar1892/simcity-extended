@@ -59,9 +59,10 @@ void printOutput(list<Zone> &mainList){
 
 		       //Turn grasslands green
 		       if(graph[i][j] == "G"){
-			       cout << "\033[102m"; //FIXME light green 92
+			       cout << "\033[102m";
 		       }
 
+                                //Output zone then reset color to default
                                 cout<<graph[i][j]<<"  ";
                                 cout << "\033[0m";
                }
