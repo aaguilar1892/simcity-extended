@@ -10,6 +10,8 @@ class Zone{
         int x;
         int y; //x & y coordinates of zone
 
+        bool claimed; //Variable for whether or not zone is claimed by city
+
         char zoneType;
         int numPop; 
         int numWorkers;
@@ -35,6 +37,8 @@ class Zone{
         int GetWorkers();
         int GetGoods(); //Gets for # available workers and goods in a zone
         
+        void SetClaimed(bool claim);
+        bool GetClaimed(); //Set and get for claim status
 
         void CheckAdjZonesC(int &workers, int &goods, int &changed, list<Zone> &mainList); //Analyze commercial zones
         void CheckAdjZonesR(int &workers, int &goods, int &changed, list<Zone> &mainList); //Analyze residential zones
