@@ -1,6 +1,6 @@
 #include "initialization.h"
 
-void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate){
+void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate, int &xmax, int &ymax){
 
     string configFile;
     fstream fin;
@@ -65,9 +65,11 @@ void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate){
         //Increase x-coordinate by 1 until end of line, then reset and increase y-coordinate by 1
         if(myZone != '\n' && myZone != ','){
             ++xCount;
+            if(xCount > xmax){xmax = xCount;}
         }
         if(myZone == '\n'){
             ++yCount;
+            if(yCount > ymax){ymax = yCount;}
             xCount = 0;
         }
     }
