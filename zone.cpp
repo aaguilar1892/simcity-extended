@@ -50,6 +50,15 @@ int Zone::GetGoods(){
     return numGoods;
 }
 
+//Set and get zone claim status
+void Zone::SetClaimed(bool claim){
+        claimed = claim;
+}
+
+bool Zone::GetClaimed(){
+        return claimed;
+}
+
 //Function for analyzing commercial zones
 void Zone::CheckAdjZonesC(int &workers, int &goods, int &changed, list<Zone> &mainList){
     
