@@ -11,6 +11,9 @@ int main(){
     int goods = 0; //Variables for # available workers & goods
     int totalPollution = 0;
     Zone myZone;
+
+    int xmax = 0;
+    int ymax 0; //Variables for maximum value of x & y coordinates of city
     
     list<Zone> mainList; //List of all zones
     
