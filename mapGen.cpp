@@ -7,7 +7,7 @@ void EnvironmentGen(list<Zone> &mainList){
 	//Generate water
 	for(auto& it : mainList){
 				
-		if(rand() % 25 == 0 && it.GetClaimed() != true){
+		if(rand() % 78 == 0 && it.GetClaimed() != true && it.GetZoneType() == 'X'){
 			it.SetZoneType('~');
 		}
 	}
@@ -19,10 +19,114 @@ void EnvironmentGen(list<Zone> &mainList){
 			if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
 				
 				if(iter.GetZoneType() == '~'){
-					if(rand() % 4 == 0 && it.GetClaimed() != true){it.SetZoneType('~');}
+					if(rand() % 3 == 0 && it.GetClaimed() != true){it.SetZoneType('~');}
 				}
 			}
 		}
+	}
+
+	//Fill in single zone islands
+	int numWater = 0;
+	for(auto& it : mainList){
+
+		for(auto& iter : mainList){
+
+                        if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
+
+				if(iter.GetZoneType() == '~'){
+					++numWater;
+				}
+			}
+		}
+		
+		if(numWater > 4){it.SetZoneType('~');}
+		numWater = 0;
+	}
+
+	//Generate mountains
+        for(auto& it : mainList){
+
+                if(rand() % 50 == 0 && it.GetClaimed() != true && it.GetZoneType() == 'X'){
+                        it.SetZoneType('M');
+                }
+        }
+
+        for(auto& it : mainList){
+
+                for(auto& iter : mainList){
+
+                        if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
+
+                                if(iter.GetZoneType() == 'M'){
+                                        if(rand() % 4 == 0 && it.GetClaimed() != true && it.GetZoneType() == 'X'){it.SetZoneType('M');}
+                                }
+                        }
+                }
+        }
+
+	//Generate forests
+        for(auto& it : mainList){
+
+                if(rand() % 25 == 0 && it.GetClaimed() != true && it.GetZoneType() == 'X'){
+                        it.SetZoneType('F');
+                }
+        }
+
+        for(auto& it : mainList){
+
+                for(auto& iter : mainList){
+
+                        if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
+
+                                if(iter.GetZoneType() == 'F'){
+                                        if(rand() % 3 == 0 && it.GetClaimed() != true && it.GetZoneType() == 'X'){it.SetZoneType('F');}
+                                }
+                        }
+                }
+        }
+
+	//Generate deserts
+        for(auto& it : mainList){
+
+                if(rand() % 20 == 0 && it.GetClaimed() != true && it.GetZoneType() == 'X'){
+                        it.SetZoneType('D');
+                }
+        }
+
+        for(auto& it : mainList){
+
+                for(auto& iter : mainList){
+
+                        if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
+
+                                if(iter.GetZoneType() == 'D'){
+                                        if(rand() % 3 == 0 && it.GetClaimed() != true && it.GetZoneType() == 'X'){it.SetZoneType('D');}
+                                }
+                        }
+                }
+        }
+
+        //Fill in single zones surrounded by desert
+        int numDesert = 0;
+        for(auto& it : mainList){
+
+                for(auto& iter : mainList){
+
+                        if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
+
+                                if(iter.GetZoneType() == 'D'){
+                                        ++numDesert;
+                                }
+                        }
+                }
+
+                if(numDesert > 4){it.SetZoneType('D');}
+                numDesert = 0;
+        }
+
+	//Generate grasslands
+	for(auto& it : mainList){
+		if(it.GetZoneType() == 'X'){it.SetZoneType('G');}
 	}
 }
 
