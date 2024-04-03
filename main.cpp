@@ -17,7 +17,7 @@ int main(){
     
     list<Zone> mainList; //List of all zones
     
-    InitializeSim(mainList, timeLimit, refreshRate); //Initializes mainList, timeLimit, refreshRate, & zone coordinates
+    InitializeSim(mainList, timeLimit, refreshRate, xmax, ymax); //Initializes mainList, timeLimit, refreshRate, & zone coordinates
     InitializeMap(mainList, xmax, ymax); //Initialize surrounding map
     
     int changed=0; //# of changes in time step
