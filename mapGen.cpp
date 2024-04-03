@@ -1,5 +1,31 @@
 #include "mapGen.h"
 
+void EnvironmentGen(list<Zone> &mainList){
+
+	srand(time(NULL)); //Initialize random number generator
+
+	//Generate water
+	for(auto& it : mainList){
+				
+		if(rand() % 25 == 0 && it.GetClaimed() != true){
+			it.SetZoneType('~');
+		}
+	}
+	
+	for(auto& it : mainList){
+
+		for(auto& iter : mainList){
+
+			if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
+				
+				if(iter.GetZoneType() == '~'){
+					if(rand() % 4 == 0 && it.GetClaimed() != true){it.SetZoneType('~');}
+				}
+			}
+		}
+	}
+}
+
 void InitializeMap(list<Zone> &mainList, int &xmax, int &ymax){
 
         Zone currZone;
@@ -39,4 +65,6 @@ void InitializeMap(list<Zone> &mainList, int &xmax, int &ymax){
                         match = false;
                 }
         }
+
+	EnvironmentGen(mainList);
 }
