@@ -1,5 +1,5 @@
 #include <iostream>
-#include "output.h"
+#include "mapGen.h"
 using namespace std;
 
 int main(){
