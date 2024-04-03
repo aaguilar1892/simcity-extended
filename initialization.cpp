@@ -57,6 +57,7 @@ void InitializeSim(list<Zone> &mainList, int &timeLimit, int &refreshRate, int &
             currZone.Setx(xCount);
             currZone.Sety(yCount);
             currZone.SetPop(pop);
+	    currZone.SetClaimed(true);
 
             //Add zone to the list of zones, mainList
             mainList.push_back(currZone);

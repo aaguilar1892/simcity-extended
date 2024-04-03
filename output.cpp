@@ -20,7 +20,7 @@ void printOutput(list<Zone> &mainList){
        
        //get zonetype, if pop in that zone type is above zero then convert pop to string and put in graph in place of zone type
         for(auto it = mainList.begin(); it != mainList.end(); ++it){
-            if(it->GetZoneType() == 'R'|| it->GetZoneType() == 'I' || it->GetZoneType() == 'C' || it->GetZoneType() == 'X'){
+            if(it->GetZoneType() == 'M' || it->GetZoneType() == '~' || it->GetZoneType() == 'F' || it->GetZoneType() == 'D' || it->GetZoneType() == 'G' || it->GetZoneType() == 'R'|| it->GetZoneType() == 'I' || it->GetZoneType() == 'C' || it->GetZoneType() == 'X'){
                 if(it->GetPop() > 0){
                     graph[it->Gety()][it->Getx()]= to_string(it->GetPop());
                 }else{
@@ -32,10 +32,14 @@ void printOutput(list<Zone> &mainList){
        //print the graph
        for(int i= 0; i<= row; ++i){
            for(int j= 0; j<= col; ++j){
-               if(graph[i][j] == "X" || graph[i][j] =="R" || graph[i][j] == "I" || graph[i][j] == "C" || graph[i][j] == "T" || graph[i][j] == "-" || graph[i][j] == "#" || graph[i][j] == "P" || graph[i][j] == "1" || graph [i][j] == "2" || graph[i][j] == "3" || graph[i][j] == "4" || graph[i][j] == "5" || graph[i][j] == "6" || graph[i][j] == "8" || graph[i][j] == "9" || graph[i][j] == "10"){
-                       if(graph[i][j] != "X"){
+               if(graph[i][j] == "M" || graph[i][j] == "~" || graph[i][j] == "F" || graph[i][j] == "D" || graph[i][j] == "G" || graph[i][j] == "X" || graph[i][j] =="R" || graph[i][j] == "I" || graph[i][j] == "C" || graph[i][j] == "T" || graph[i][j] == "-" || graph[i][j] == "#" || graph[i][j] == "P" || graph[i][j] == "1" || graph [i][j] == "2" || graph[i][j] == "3" || graph[i][j] == "4" || graph[i][j] == "5" || graph[i][j] == "6" || graph[i][j] == "8" || graph[i][j] == "9" || graph[i][j] == "10"){
+                       if(graph[i][j] != "X" && graph[i][j] != "M" && graph[i][j] != "~" && graph[i][j] != "F" && graph[i][j] != "D" && graph[i][j] != "G"){
                                 cout << "\033[31m";
                        }
+
+		       if(graph[i][j] == "~"){
+			       cout << "\033[34m";
+		       }
                                 cout<<graph[i][j]<<"  ";
                                 cout << "\033[0m";
                }
