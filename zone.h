@@ -1,3 +1,5 @@
+#ifndef zone_h
+#define zone_h
 #include <iostream>
 #include <list>
 #include <string>
@@ -49,3 +51,5 @@ class Zone{
         int getPollutionLevel(); //Get pollution level of zone
         void spreadPollution(list<Zone> &mainList); //Spread pollution to adjacent zones
 };
+#endif
+
