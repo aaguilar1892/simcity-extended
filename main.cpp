@@ -1,9 +1,12 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 #include "mapGen.h"
+#include "storm.h"
 using namespace std;
 
 int main(){
-    
+    srand(static_cast<unsigned int>(time(nullptr)));
     int timeLimit;
     int refreshRate; //Variables for max # time steps & how often time steps are printed to the screen
     
@@ -71,6 +74,16 @@ int main(){
         for(auto& it : mainList){
             it.spreadPollution(mainList);
         }
+
+        //storm simulation
+        cout<<endl;
+        bool severesimu= false;
+        severesimu= storm(mainList);
+        if(severesimu){
+            cout<<"severe"<<endl;
+            severe(mainList);
+        }
+        cout<<endl;
     }
 
     // Update totalPollution
