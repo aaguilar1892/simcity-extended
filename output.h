@@ -1,3 +1,5 @@
+#ifndef output_h
+#define output_h
 #include <iostream>
 #include <list>
 #include <vector>
@@ -12,3 +14,4 @@ void printArea(list<Zone> &mainList);
 void printPop(list<Zone> &mainList);
 
 void printPollution(list<Zone>& mainList);
+#endif 
