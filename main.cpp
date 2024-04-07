@@ -88,7 +88,7 @@ int main(){
 
         char build; //Whether or not user wants to build a new zone
         int totalPop = 0; //Total population of city
-        int builtZones = 0;
+        int builtZones = 0; //# Additional zones built
 
         //Calculate total city population
         for(auto it : mainList){totalPop = totalPop + it.GetPop();}
