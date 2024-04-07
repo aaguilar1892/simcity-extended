@@ -35,7 +35,7 @@ void BuildMenu(int totalPop, int &builtZones, list<Zone> &mainList){
 			cout << "\tP : Powerplant" << endl;
 			cout << "\tT : Powerline" << endl;
 			cout << "\t- : Road" << endl;
-    	       		cout << endl;
+    	    cout << endl;
 
 			cout << "Enter choice: ";
 			cin >> choice;
@@ -59,34 +59,40 @@ void Build(char choice, int totalPop, int &builtZones, list<Zone> &mainList, int
 
 	char build; //Whether or not user wants to build a new zone
 
-	//Check build requirements and build zone
+	//Build new city zone and set as claimed
 	switch(choice){
 
+		//Build residential
 		case 'R':
-			//Conditions FIXME
 			ChangeZoneType('R', xCoord, yCoord, mainList);
 			++builtZones;
 			break;
+		//Build industrial
 		case 'I':
 			ChangeZoneType('I', xCoord, yCoord, mainList);
 			++builtZones;
 			break;
+		//Build commercial
 		case 'C':
 			ChangeZoneType('C', xCoord, yCoord, mainList);
 			++builtZones;
 			break;
+		//Build powerplant
 		case 'P':
 			ChangeZoneType('P', xCoord, yCoord, mainList);
 			++builtZones;
 			break;
+		//Build powerline
 		case 'T':
 			ChangeZoneType('T', xCoord, yCoord, mainList);
 			++builtZones;
 			break;
+		//Build road
 		case '-':
 			ChangeZoneType('-', xCoord, yCoord, mainList);
 			++builtZones;
 			break;
+		//Invalid zone type
 		default:
 			cout << "ERROR: Invalid choice. Please re-enter zone type." << endl;
 			BuildMenu(totalPop, builtZones, mainList);
@@ -107,14 +113,13 @@ void Build(char choice, int totalPop, int &builtZones, list<Zone> &mainList, int
 	if(build == 'Y'){
 		BuildMenu(totalPop, builtZones, mainList);
 	}
-	//else{return;}
 }
 
 bool ZoneValidity(int xCoord, int yCoord, list<Zone> mainList){
 
-	bool valid = false;
-	bool zoneFound = false;
-	bool cityAdjacent = false;
+	bool valid = false; //If coordinates can be built on
+	bool zoneFound = false; //If zone coordinates exist
+	bool cityAdjacent = false; //If zone to be developed is adjacent to the city
 
 	for(auto it : mainList){
 	
