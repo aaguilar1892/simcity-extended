@@ -59,16 +59,16 @@ int main(){
         
         //Print output for current time step if appropriate for specified refresh rate
         if(i%refreshRate == 0){
-//            printOutput(mainList);
+            printOutput(mainList);
         }
 
         //Calculate total # available workers & goods
         workers = myZone.CalcWorkers(mainList, workers);
 
-//        cout<<"Time Step: "<<i+1<<endl;
-//        cout<<"Available Workers: "<<workers<<endl;
-//        cout<<"Available Goods: "<<goods<<endl;
-//        cout<<endl;
+        cout<<"Time Step: "<<i+1<<endl;
+        cout<<"Available Workers: "<<workers<<endl;
+        cout<<"Available Goods: "<<goods<<endl;
+        cout<<endl;
 
         // Spread pollution 
         for(auto& it : mainList){
