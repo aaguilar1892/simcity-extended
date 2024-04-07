@@ -85,6 +85,18 @@ int main(){
             severe(mainList);
         }
         cout<<endl;
+
+        char build; //Whether or not user wants to build a new zone
+        int totalPop = 0; //Total population of city
+        int builtZones = 0; //# Additional zones built
+
+        //Calculate total city population
+        for(auto it : mainList){totalPop = totalPop + it.GetPop();}
+
+        cout << "Would you like to build a new city zone? Enter Y/N: ";
+        cin >> build;
+        cin.ignore();
+        if(build == 'Y'){BuildMenu(totalPop, builtZones, mainList);}
     }
 
     // Update totalPollution
