@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "mapGen.h"
 #include "storm.h"
+#include "encryption.h"
 using namespace std;
 
 int main(){
@@ -106,5 +107,15 @@ int main(){
     
     cout<< "Total Pollution: "<<totalPollution<<endl;
 
+    char userinp;
+    vector<int> encryptVals;
+
+    cout << "Do you want to encrypt? Y/N" << endl;
+    cin >> userinp;
+
+    if((userinp == 'Y') || (userinp == 'y')){
+        publicKey(encryptVals);
+    }
+    
     return 0;
 }
