@@ -4,9 +4,21 @@
 #include "mapGen.h"
 #include "storm.h"
 #include "encryption.h"
+//#include "PausePlay.h"
 using namespace std;
 
 int main(){
+
+    /*
+    Control control;
+    while (true) {
+        //TODO: Move main loop here
+
+        auto command = control.getUserCommand();
+        if (command == Control::Command::Quit) break;
+        else if (command == Control::Command::Pause) control.waitForPlay();
+    */
+
     srand(static_cast<unsigned int>(time(nullptr)));
     int timeLimit;
     int refreshRate; //Variables for max # time steps & how often time steps are printed to the screen
