@@ -93,6 +93,21 @@ int main(){
         //Calculate total city population
         for(auto it : mainList){totalPop = totalPop + it.GetPop();}
 
+        /*cout << "Enter 'play' to continue, 'pause' to pause, or 'quit' to end simulation: ";
+        string userInput;
+        cin >> userInput;
+
+        if (userInput == "pause") {
+            cout << "Simulation paused. Enter 'play' to resume.";
+            do {
+                cin >> userInput;
+            } while (userInput != "play");
+            cout << "Resuming simulation..." << endl;
+        } else if (userInput == "quit") {
+            cout << "Simulation ended by user." << endl;
+            break; // Exit the simulation loop
+        }*/
+
         cout << "Would you like to build a new city zone? Enter Y/N: ";
         cin >> build;
         cin.ignore();
