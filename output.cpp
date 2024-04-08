@@ -29,6 +29,24 @@ void printOutput(list<Zone> &mainList){
                     graph[it->Gety()][it->Getx()]= it->GetZoneType();
                 }
         }
+
+        // Print the graph with color coding
+        /* for(int i=0; i<=row; ++i){
+            for(int j=0; j<=col; ++j){
+                // Check and print each zone type with respective color
+                if(graph[i][j] == "R"){
+                    cout << "\033[32m" << graph[i][j] << "\033[0m  "; // Green for Residential
+                } else if(graph[i][j] == "I"){
+                    cout << "\033[31m" << graph[i][j] << "\033[0m  "; // Red for Industrial
+                } else if(graph[i][j] == "C"){
+                    cout << "\033[33m" << graph[i][j] << "\033[0m  "; // Yellow for Commercial
+                } else {
+                    cout << graph[i][j] << "  "; // Default color for other types
+                }
+            }
+            cout << endl;
+        }*/
+
        //print the graph
        for(int i= 0; i<= row; ++i){
            for(int j= 0; j<= col; ++j){

@@ -4,9 +4,21 @@
 #include "mapGen.h"
 #include "storm.h"
 #include "encryption.h"
+//#include "PausePlay.h"
 using namespace std;
 
 int main(){
+
+    /*
+    Control control;
+    while (true) {
+        //TODO: Move main loop here
+
+        auto command = control.getUserCommand();
+        if (command == Control::Command::Quit) break;
+        else if (command == Control::Command::Pause) control.waitForPlay();
+    */
+
     srand(static_cast<unsigned int>(time(nullptr)));
     int timeLimit;
     int refreshRate; //Variables for max # time steps & how often time steps are printed to the screen
@@ -92,6 +104,21 @@ int main(){
 
         //Calculate total city population
         for(auto it : mainList){totalPop = totalPop + it.GetPop();}
+
+        /*cout << "Enter 'play' to continue, 'pause' to pause, or 'quit' to end simulation: ";
+        string userInput;
+        cin >> userInput;
+
+        if (userInput == "pause") {
+            cout << "Simulation paused. Enter 'play' to resume.";
+            do {
+                cin >> userInput;
+            } while (userInput != "play");
+            cout << "Resuming simulation..." << endl;
+        } else if (userInput == "quit") {
+            cout << "Simulation ended by user." << endl;
+            break; // Exit the simulation loop
+        }*/
 
         cout << "Would you like to build a new city zone? Enter Y/N: ";
         cin >> build;
