@@ -8,10 +8,6 @@ Group Members: Alexis Aguilar, Corinna Martin, Claire Pacquing, Britton Womble
     g++ -o simcity main.cpp initialization.cpp zone.cpp output.cpp
     ./simcity
 
-    Optional Compile Method with Makefile:
-    make
-    ./simcity
-
 Files needed:
     config1.txt , region1.csv
     
