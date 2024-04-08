@@ -6,4 +6,14 @@
 
 void promptContinue();
 
+class Control {
+public:
+    enum class Command { Continue, Pause, Quit };
+
+    Command getUserCommand();
+
+    void waitForPlay();
+};
+
+
 #endif // PAUSEPLAY_H

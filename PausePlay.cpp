@@ -20,3 +20,37 @@ void promptContinue() {
         }
     }
 }
+
+Control::Command getUserCommand() {
+    std::string input;
+    std::cout << "\n[Continue, Pause, Quit]: ";
+    std::getline(std::cin, input);
+       
+    if (input == "Pause") return Control::Command::Pause;
+    else if (input == "Quit") return Control::Command::Quit;
+    else return Control::Command::Continue;
+}
+
+void waitForPlay() {
+    std::string input;
+    do {
+        std::cout << "Type 'Play' to continue: ";
+        std::getline(std::cin, input);
+    } while (input != "Play");
+}
+
+/*cout << "Enter 'play' to continue, 'pause' to pause, or 'quit' to end simulation: ";
+        string userInput;
+        cin >> userInput;
+
+        if (userInput == "pause") {
+            cout << "Simulation paused. Enter 'play' to resume.";
+            do {
+                cin >> userInput;
+            } while (userInput != "play");
+            cout << "Resuming simulation..." << endl;
+        } else if (userInput == "quit") {
+            cout << "Simulation ended by user." << endl;
+            break; // Exit the simulation loop
+        }*/
+
