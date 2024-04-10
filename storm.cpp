@@ -87,9 +87,7 @@ void severe(list<Zone> &mainList){
     ycoord = rand() % col +1;
     
     //cout storm location
-    cout<<"storm coordinates: "<<endl;
-    cout<<"xcoord= "<<xcoord<<endl;
-    cout<<"ycoord= "<<ycoord<<endl;
+    cout<<"storm coordinates: ( "<<xcoord<<","<<ycoord<<" )"<<endl;
 
     //practice to make sure its working/debug
     //int pop=0;
