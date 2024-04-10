@@ -95,6 +95,12 @@ int main(){
         if(severesimu){
             cout<<"severe"<<endl;
             severe(mainList);
+            if(workers>0){
+                workers=workers/2;
+            }
+            if(goods>0){
+                goods=goods/2;
+            }
         }
         cout<<endl;
 
