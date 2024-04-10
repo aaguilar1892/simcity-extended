@@ -93,7 +93,7 @@ int main(){
         bool severesimu= false;
         severesimu= storm(mainList);
         if(severesimu){
-            cout<<"severe"<<endl;
+            cout<<"Severe Weather"<<endl;
             severe(mainList);
             if(workers>0){
                 workers=workers/2;
