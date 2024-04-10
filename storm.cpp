@@ -13,7 +13,7 @@ bool storm(list<Zone> &mainList){
     random = rand() % 10 + 1;
     
     //cout<<"random number: ";
-   // cout<<random<<endl;
+    // cout<<random<<endl;
 
    cout<<"Weather: ";
     
