@@ -89,7 +89,6 @@ int main(){
         }
 
         //storm simulation
-        cout<<endl;
         bool severesimu= false;
         severesimu= storm(mainList);
         if(severesimu){
