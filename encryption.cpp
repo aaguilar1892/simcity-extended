@@ -114,7 +114,7 @@ void encryptSim(list<Zone> &mainList, vector<int> &encryptVals){
         iter.SetZoneType(encryptChar);
 
         //Get new encrypted population
-        /*
+        
         if(iter.GetPop() == 1){
             encryptPop = finalProd + 1;
         } else if(iter.GetPop() == 2) {
@@ -126,6 +126,6 @@ void encryptSim(list<Zone> &mainList, vector<int> &encryptVals){
         }
 
         iter.SetPop(encryptPop);
-        */
+        
     }
 }
