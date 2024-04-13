@@ -57,37 +57,75 @@ void publicKey(vector<int> &encryptVals){
 
 }
 
-/*void encryptSim(list<Zone> &mainList, vector<int> encryptVals){
+void encryptSim(list<Zone> &mainList, vector<int> &encryptVals){
     //encryption characters
-    //vector<char> encryptOpts = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-', '+', '#', '!', '?'};
-    
-    int addedVal;
-    int currVal;
+    vector<char> encryptOpts = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-', '+', '#', '!', '?', '|', '~', ' '};
+    int addedAlphVal;
+    int finalProd;
+    int power = encryptVals[0];
+    int encryptPop; //encryption values;
 
-    //31 options for encryption, narrowing down the modulo for RSA algorithm
-    if(encryptVals[1] >= 30){
-        int newVal;
-        newVal = encryptVals[1] % 30;
-        //value for modulo cannot be 0 or RSA algorithm will become undefined
-        if(newVal == 0){
-            newVal = 1;
-        }
-            encryptVals.push_back(newVal);
-            addedVal = (pow(2, encryptVals[0])) % encryptVals[2];
-    } else {
-        addedVal = (pow(2, encryptVals[0])) % encryptVals[1];
+    for(int i = 1; i <= encryptVals[4]; i++) {
+        power = power * encryptVals[0];
     }
-    
-    for(auto iter: mainList) {
-        
+
+    finalProd = power % encryptVals[1];
+
+    for(auto& iter: mainList) {
+        int encryptVal = 0;
+        char encryptChar;
+
+        //Looking at the zone type
         if (iter.GetZoneType() == 'C'){
-            currVal = 2;
-        } else if (iter. GetZoneType() == 'I') {
-            currVal = 8;
+            encryptVal = finalProd + 2;
+        } else if(iter.GetZoneType() == 'D') {
+            encryptVal = finalProd + 3;
+        } else if (iter.GetZoneType() == 'F') {
+            encryptVal = finalProd + 5;
+        } else if (iter.GetZoneType() == 'G') {
+            encryptVal = finalProd + 6;
+        } else if (iter.GetZoneType() == 'I') {
+            encryptVal = finalProd + 8;
+        } else if(iter.GetZoneType() == 'M') {
+            encryptVal = finalProd + 12;
+        } else if (iter.GetZoneType() == 'R') {
+            encryptVal = finalProd + 17;
         } else if (iter.GetZoneType() == 'T') {
-            currVal = 19;
+            encryptVal = finalProd + 19;
+        } else if (iter.GetZoneType() == '-') {
+            encryptVal = finalProd + 26;
+        } else if (iter.GetZoneType() == '#') {
+            encryptVal = finalProd + 28;
+        } else if (iter.GetZoneType() == '|'){
+            encryptVal = finalProd + 31;
+        } else if (iter.GetZoneType() == '~'){
+            encryptVal = finalProd + 32;
+        } else if (iter.GetZoneType() == ' '){
+            encryptVal = finalProd + 33;
         }
 
+        //34 options for encryption, narrowing down the modulo for RSA algorithm      
+        if(encryptVal >= 34) {
+            encryptVal = encryptVal % 34;
+        }
+
+        //Gets and sets the new encrypted character
+        encryptChar = encryptOpts[encryptVal];
+        iter.SetZoneType(encryptChar);
+
+        //Get new encrypted population
+        /*
+        if(iter.GetPop() == 1){
+            encryptPop = finalProd + 1;
+        } else if(iter.GetPop() == 2) {
+            encryptPop = finalProd + 2;
+        } else if (iter.GetPop() == 3){
+            encryptPop = finalProd + 3;
+        } else if (iter.GetPop() == 4) {
+            encryptPop = finalProd + 4;
+        }
+
+        iter.SetPop(encryptPop);
+        */
     }
 }
-*/
