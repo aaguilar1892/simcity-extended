@@ -159,7 +159,15 @@ int main(){
 
     if((userinp == 'Y') || (userinp == 'y')){
         publicKey(encryptVals);
+        encryptSim(mainList, encryptVals);
     }
+
+    //final print
+    printOutput(mainList);
+
+    //print final population of each zone
+    printPop(mainList);
+    privateKey(mainList, encryptVals);
     
     return 0;
 }
