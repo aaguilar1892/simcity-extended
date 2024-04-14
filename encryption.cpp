@@ -129,3 +129,30 @@ void encryptSim(list<Zone> &mainList, vector<int> &encryptVals){
         
     }
 }
+
+void privateKey(list<Zone> &mainList, vector<int> &encryptVals){
+    int dec = 1;
+    int num = 1;
+    int e = encryptVals[4];
+    int phi = encryptVals[3];
+    int loop = 1;
+
+    while(loop != 3){
+        dec = num * encryptVals[4];
+        //doing the first one if it is a smaller number is too easy to decrypt
+        if(dec % phi != 1){
+            num++;
+        } else {
+            loop++;
+            num++;            
+        }
+
+    }
+
+    dec = dec / encryptVals[4];
+    encryptVals.push_back(dec);
+
+    //print private key value
+    cout << "Private Key: (" << encryptVals[5] << ", " << encryptVals[2] << ") " << endl;
+
+}
