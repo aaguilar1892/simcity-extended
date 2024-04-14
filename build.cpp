@@ -5,8 +5,6 @@ void BuildMenu(int totalPop, int &builtZones, list<Zone> &mainList){
 	char choice;
         int xCoord, yCoord; //x & y coords of zone to develop
 
-	cout << "TEST: builtZones = " << builtZones << endl;
-
         //Check if population sufficient to build a new zone
 	if(builtZones < (totalPop)){
 
