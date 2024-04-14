@@ -11,4 +11,6 @@ void publicKey(vector<int> &encryptVals);
 
 void encryptSim(list<Zone> &mainList, vector<int> &encryptVals);
 
+void privateKey(list<Zone> &mainList, vector<int> &encryptVals);
+
 #endif
