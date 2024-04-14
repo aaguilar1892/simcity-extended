@@ -19,7 +19,7 @@ void EnvironmentGen(list<Zone> &mainList){
 			if((iter.Getx() == it.Getx() || iter.Getx() == it.Getx() + 1 || iter.Getx() == it.Getx() - 1) && (iter.Gety() == it.Gety() || iter.Gety() == it.Gety() + 1 || iter.Gety() == it.Gety() - 1) && (!(iter.Getx() == it.Getx() && iter.Gety() == it.Gety()))){
 				
 				if(iter.GetZoneType() == '~'){
-					if(rand() % 3 == 0 && it.GetClaimed() != true){it.SetZoneType('~');}
+					if(rand() % 3 == 0 && it.GetClaimed() != true && it.GetZoneType() == 'X'){it.SetZoneType('~');}
 				}
 			}
 		}
