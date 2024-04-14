@@ -152,12 +152,44 @@ void printArea(list<Zone> &mainList){
     //print graph
     for(int i= ycoord1; i<=ycoord2; ++i){
         for(int j=xcoord1; j<= xcoord2; ++j){
-            if(graph[i][j] =="R" || graph[i][j] == "I" || graph[i][j] == "C" || graph[i][j] == "T" || graph[i][j] == "-" || graph[i][j] == "#" || graph[i][j] == "P" || graph[i][j] == "1" || graph [i][j] == "2" || graph[i][j] == "3" || graph[i][j] == "4"|| graph[i][j] == "5" || graph[i][j] == "6" || graph[i][j] == "8" || graph[i][j] == "9" || graph[i][j] == "10"){
-                cout<<graph[i][j]<<"  ";
-            }
-            else{
-                cout<<"   ";
-            }
+            if(graph[i][j] == "~" || graph[i][j] == "M" || graph[i][j] == "F" || graph[i][j] == "D" || graph[i][j] == "G" || graph[i][j] =="R" || graph[i][j] == "I" || graph[i][j] == "C" || graph[i][j] == "T" || graph[i][j] == "-" || graph[i][j] == "#" || graph[i][j] == "P" || graph[i][j] == "1" || graph [i][j] == "2" || graph[i][j] == "3" || graph[i][j] == "4"|| graph[i][j] == "5" || graph[i][j] == "6" || graph[i][j] == "8" || graph[i][j] == "9" || graph[i][j] == "10"){
+
+		       if(graph[i][j] != "X" && graph[i][j] != "M" && graph[i][j] != "~" && graph[i][j] != "F" && graph[i][j] != "D" && graph[i][j] != "G"){
+                                cout << "\033[41m";
+                       }
+
+                       //Turn water zones blue
+                       if(graph[i][j] == "~"){
+                               cout << "\033[44m";
+                       }
+
+                       //Turn mountains gray
+                       if(graph[i][j] == "M"){
+                               cout << "\033[100m";
+                       }
+
+                       //Turn forests dark green
+                       if(graph[i][j] == "F"){
+                               cout << "\033[42m";
+                       }
+
+                       //Turn deserts yellow
+                       if(graph[i][j] == "D"){
+                               cout << "\033[43m";
+                       }
+
+                       //Turn grasslands green
+                       if(graph[i][j] == "G"){
+                               cout << "\033[102m";
+                       }
+
+                       //Output zone then reset color to default
+                       cout<<graph[i][j]<<"  ";
+                       cout << "\033[0m";
+               }
+               else{
+                   cout<<"   ";
+               }
         }
         cout<<endl;
     }
