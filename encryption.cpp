@@ -9,6 +9,7 @@ void publicKey(vector<int> &encryptVals){
     int e;//variables for creating the public key
     
     //only need two values so it loops twice
+    cout << "Lower numbers are suggested to the final encrypted map. Ex: 2, 7" << endl;
     while(loop != 3){
         
         //enter a value greater than zero for algorithm and modulo
