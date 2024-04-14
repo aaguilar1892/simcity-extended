@@ -40,7 +40,7 @@ int main(){
 
     //Output initial state
     printOutput(mainList); 
-    cout << "--Initial State --" << endl;
+    cout << "-- Initial State --" << endl;
     cout << endl;
     
     //Analyze every zone during each time step until time limit is reached
@@ -67,6 +67,9 @@ int main(){
         
         //if there is no change inbetween it stops the loop
         if(changed == 0){
+            cout << endl;
+            cout << "~~ No change between time steps. ~~" << endl;
+            cout << endl;
             break;
         }
         
@@ -138,6 +141,9 @@ int main(){
     }
 
     //final print
+    cout << endl;
+    cout << "-- Final State --" << endl;
+    cout << endl;
     printOutput(mainList);
 
     //print final population of each zone
