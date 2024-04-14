@@ -6,6 +6,7 @@ Zone::Zone(){
     numWorkers = 0;
     numGoods = 0;
     claimed = false;
+    pollutionLevel = 0;
 }
 
 //Set and gets for zone coordinates and type
