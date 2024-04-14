@@ -16,7 +16,7 @@ void publicKey(vector<int> &encryptVals){
         cout << "Please Enter Value: ";
         cin >> userval;
         
-        if(userval > 0){
+        if(userval > 1){
             encryptVals.push_back(userval);
             loop = loop + 1;
         } else {
