@@ -5,8 +5,6 @@ void BuildMenu(int totalPop, int &builtZones, list<Zone> &mainList){
 	char choice;
         int xCoord, yCoord; //x & y coords of zone to develop
 
-//	cout << "TEST: builtZones = " << builtZones << endl;
-
         //Check if population sufficient to build a new zone
 	if(builtZones < (totalPop)){
 
@@ -14,15 +12,16 @@ void BuildMenu(int totalPop, int &builtZones, list<Zone> &mainList){
                 cout << "Choose coordinates to develop." << endl;
                 cout << "x: ";
                 cin >> xCoord;
-		cin.ignore();
+				cin.ignore();
                 cout << "y: ";
                 cin >> yCoord;
-		cin.ignore();
+				cin.ignore();
 
                 //Check if chosen coordinates are valid
                 bool valid;
                 valid = ZoneValidity(xCoord, yCoord, mainList);
 
+		//Output menu if coordinates can be developed
 		if(valid == true){
 
 			cout << endl;
@@ -42,6 +41,7 @@ void BuildMenu(int totalPop, int &builtZones, list<Zone> &mainList){
 			cin.ignore();
 			cout << endl;
 
+			//Build chosen zone type on specified coordinates
 			Build(choice, totalPop, builtZones, mainList, xCoord, yCoord);
 		}
 		else{
