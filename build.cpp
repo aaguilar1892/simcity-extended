@@ -5,6 +5,8 @@ void BuildMenu(int totalPop, int &builtZones, list<Zone> &mainList){
 	char choice;
         int xCoord, yCoord; //x & y coords of zone to develop
 
+//	cout << "TEST: builtZones = " << builtZones << endl;
+
         //Check if population sufficient to build a new zone
 	if(builtZones < (totalPop)){
 
@@ -130,9 +132,12 @@ bool ZoneValidity(int xCoord, int yCoord, list<Zone> mainList){
 			if(it.GetZoneType() == 'G' || it.GetZoneType() == 'F' || it.GetZoneType() == 'D'){valid = true;}
 			if(it.GetZoneType() == '~'){cout << "Cannot build on water." << endl;}
 			if(it.GetZoneType() == 'M'){cout << "Cannot develop mountainous terrain." << endl;}
+			if(it.GetZoneType() == 'R' || it.GetZoneType() == 'I' || it.GetZoneType() == 'C' || it.GetZoneType() == 'P' || it.GetZoneType() == 'T' || it.GetZoneType() == '-' || it.GetZoneType() == '#'){
+				cout << "Cannot build on already developed zones." << endl;
+			}
 
 			//Check if zone is adjacent to city
-			if(valid == true){
+			if(valid == true || valid == false){
 
 				for(auto iter : mainList){
 
