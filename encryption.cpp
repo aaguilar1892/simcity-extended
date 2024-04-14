@@ -138,7 +138,7 @@ void privateKey(list<Zone> &mainList, vector<int> &encryptVals){
     int loop = 1;
 
     while(loop != 3){
-        dec = num * encryptVals[4];
+        dec = num * e;
         //doing the first one if it is a smaller number is too easy to decrypt
         if(dec % phi != 1){
             num++;
@@ -149,7 +149,7 @@ void privateKey(list<Zone> &mainList, vector<int> &encryptVals){
 
     }
 
-    dec = dec / encryptVals[4];
+    dec = dec / e;
     encryptVals.push_back(dec);
 
     //print private key value
