@@ -30,23 +30,6 @@ void printOutput(list<Zone> &mainList){
                 }
         }
 
-        // Print the graph with color coding
-        /* for(int i=0; i<=row; ++i){
-            for(int j=0; j<=col; ++j){
-                // Check and print each zone type with respective color
-                if(graph[i][j] == "R"){
-                    cout << "\033[32m" << graph[i][j] << "\033[0m  "; // Green for Residential
-                } else if(graph[i][j] == "I"){
-                    cout << "\033[31m" << graph[i][j] << "\033[0m  "; // Red for Industrial
-                } else if(graph[i][j] == "C"){
-                    cout << "\033[33m" << graph[i][j] << "\033[0m  "; // Yellow for Commercial
-                } else {
-                    cout << graph[i][j] << "  "; // Default color for other types
-                }
-            }
-            cout << endl;
-        }*/
-
        //print the graph
        for(int i= 0; i<= row; ++i){
            for(int j= 0; j<= col; ++j){
@@ -54,6 +37,21 @@ void printOutput(list<Zone> &mainList){
                        if(graph[i][j] != "X" && graph[i][j] != "M" && graph[i][j] != "~" && graph[i][j] != "F" && graph[i][j] != "D" && graph[i][j] != "G"){
                                 cout << "\033[41m";
                        }
+
+                // Turn Residential magenta
+                if(graph[i][j] == "R"){
+			       cout << "\033[35m";
+		       }
+
+                // Turn Commercial black
+               if(graph[i][j] == "C"){
+			       cout << "\033[30m";
+		       }
+
+                // Turn Industial bright cyan
+               if(graph[i][j] == "I"){
+			       cout << "\033[96m";
+		       }
 
 		       //Turn water zones blue
 		       if(graph[i][j] == "~"){
