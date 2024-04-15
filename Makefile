@@ -2,10 +2,10 @@
 EXECUTABLE = simcity 
 
 # Source files
-SRCS = initialization.cpp zone.cpp output.cpp main.cpp
+SRCS = initialization.cpp zone.cpp output.cpp build.cpp encryption.cpp mapGen.cpp PausePlay.cpp storm.cpp main.cpp
 
 # Header files 
-HEADERS = initialization.h zone.h output.h
+HEADERS = initialization.h zone.h output.h build.h encryption.h mapGen.h PausePlay.h storm.h
 
 # Compiler
 CXX = g++

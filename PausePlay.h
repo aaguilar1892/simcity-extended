@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 
-void promptContinue();
-
 class Control {
 public:
     enum class Command { Continue, Pause, Quit };
