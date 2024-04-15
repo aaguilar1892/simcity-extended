@@ -38,9 +38,9 @@ void printOutput(list<Zone> &mainList){
                                 cout << "\033[41m";
                        }
 
-                // Turn Residential magenta
+                // Turn Residential green
                 if(graph[i][j] == "R"){
-			       cout << "\033[35m";
+			       cout << "\033[32m";
 		       }
 
                 // Turn Commercial black
